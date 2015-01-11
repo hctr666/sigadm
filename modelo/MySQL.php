@@ -3,8 +3,8 @@
 class MySQL {
     
     function conectar() {
-        $con = mysql_connect("localhost", "root", "FUCKn0k14c300") or die(":(");
-        mysql_select_db("ism") or die("Problemas al conectar con la BD:(");
+        $con = mysql_connect("mymachine", "usuario", "clave_ultra_secreta") or die(":(");
+        mysql_select_db("database_unknown") or die("Problemas al conectar con la BD:(");
         return $con;
     }
 
