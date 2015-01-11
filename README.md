@@ -1,2 +1,0 @@
-# sigadm
-rr.hh sigadmin
