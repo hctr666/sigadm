@@ -1,34 +1,8 @@
-<!--<?php
-	/*require_once('../fpdf/html2pdf.php');
-
-	if (isset($_GET['codi_contr'])) {
-		$codi_contr = $_GET['codi_contr'];
-	}
-
-	$pdf=new PDF_HTML();
-	$pdf->SetFont('Arial','',11);
-	$pdf->AddPage();
-
-	$doc = new DOMDocument();
-	$doc->loadHTMLFile("../reporte/01.php");
-	$text=$doc->saveHTML();
-
-	if(ini_get('magic_quotes_gpc')=='1'){
-		$text=stripslashes($text);
-	}
-	$pdf->WriteHTML($text);
-
-	//$pdf->SetXY(2,300) ;
-	//$pdf->Cell(0, 8, 'prueba', 0, 0, 'C');
-
-	$pdf->Output();
-	exit;*/
-?>-->
-
 <?php
 
 	ob_start();
-	require("../fpdf/fpdf.php");
+	require_once("pdf_core.php");
+	/*require("../fpdf/fpdf.php");
 
 	class RepContrato extends FPDF
 	{
@@ -69,7 +43,7 @@
 		    $this->ChapterTitle($title);
 		    $this->ChapterBody($file);
 		}
-	}
+	}*/
 
 	$pdf = new RepContrato();
 	$pdf->SetMargins(20,22,20);
@@ -255,11 +229,15 @@
 	$pdf->SetFont('Arial','',11);
 
 	#dividir fecha inicial
-	$di = substr($registro->fech_inic, 8, 2);
-	$mi = substr($registro->fech_inic, 5, 2);
-	$yi = substr($registro->fech_inic, 0, 4);
-	$di -= 1; 
+	#$fecha_ini = date("Y-m-d");
+	$fechaant = strtotime('-1 day', strtotime($registro->fech_inic));
+	$fechaant = date("Y-m-d", $fechaant);
 
+	$di = substr($fechaant, 8, 2);
+	$mi = substr($fechaant, 5, 2);
+	$yi = substr($fechaant, 0, 4);
+
+	#el nombre del mes
 	require_once('../util/fechas.php');
 	$mes = new Fechas();
 	$nommes = $mes::getMes($mi);

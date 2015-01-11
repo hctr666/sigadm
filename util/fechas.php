@@ -60,7 +60,7 @@
 					return 'Noviembre';
 					break;
 
-				case 'variable':
+				case '12':
 					return 'Diciembre';
 					break;			
 
