@@ -207,13 +207,13 @@ if (isset($_SESSION['codi_usua'])) {
                     require_once("../reporte/tmpAlta.php");
                     break;
                 case '06':
-                    require_once("");
+                    require_once("../reporte/art57.php");
                     break;
                 case '07':
                     require_once("");
                     break; 
                 case '08':
-                    require_once("");
+                    require_once("../reporte/art57sin.php");
                     break;
                 case '09':
                     require_once("");
