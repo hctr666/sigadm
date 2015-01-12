@@ -210,7 +210,7 @@ if (isset($_SESSION['codi_usua'])) {
                     require_once("../reporte/art57.php");
                     break;
                 case '07':
-                    require_once("");
+                    require_once("../reporte/cartaSENATI.php");
                     break; 
                 case '08':
                     require_once("../reporte/art57sin.php");
