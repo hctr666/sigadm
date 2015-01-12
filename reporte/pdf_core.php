@@ -5,26 +5,26 @@
 	{
 
 		function ChapterTitle($label){
-		    // Arial 11
-		    $this->SetFont('Arial','B',11);
+		    // Arial 10
+		    $this->SetFont('Arial','B',10);
 		    // Color de fondo
 		    #$this->SetFillColor(200,220,255);
 		    // Título
 		    $this->MultiCell(0,5,$label,false);
 		    // Salto de línea
-		    $this->Ln(4);
+		    $this->Ln(3);
 		}
 
 		function ChapterBody($file){
 	    	// Leemos el fichero
 	    	$txt = utf8_decode(file_get_contents($file));
-	    	$this->SetFont('Arial','',11);
+	    	$this->SetFont('Arial','',10);
 	    	//remueve los '?'
 	    	$txt = ltrim($txt, '?');
 	    	// Imprimimos el texto justificado
 	    	$this->MultiCell(0,5,$txt);
 	    	// Salto de línea
-	    	$this->Ln(10);
+	    	$this->Ln(7);
 		}
 
 		function footer(){

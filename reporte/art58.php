@@ -8,7 +8,7 @@
 	{
 
 		function ChapterTitle($label){
-		    // Arial 11
+		    // Arial 10
 		    $this->SetFont('Arial','B',11);
 		    // Color de fondo
 		    #$this->SetFillColor(200,220,255);
@@ -51,77 +51,77 @@
 	$pdf->AddPage();
 
 	#Colocando el título
-	$pdf->SetFont('Arial','B',14);
+	$pdf->SetFont('Arial','B',13);
 	$title = "CONTRATO DE TRABAJO SUJETO A MODALIDAD";
 	$w = $pdf->GetStringWidth($title)+6;
 
 	$pdf->SetX((210-$w)/2);
 	$pdf->Cell($w,9,utf8_decode($title),0,0,'C',false);
-	$pdf->Ln(20);
+	$pdf->Ln(15);
 
 	#linea 1
-	$pdf->SetFont('Arial', '', 11);
+	$pdf->SetFont('Arial', '', 10);
 	$pdf->MultiCell(0,5,"Conste por el presente documento, el CONTRATO DE TRABAJO SUJETO A MODALIDAD que celebran y suscriben:");
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	#capitulo 1
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(0,0,"I.	DATOS DEL EMPLEADOR:",'I');
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
 	$p1 = utf8_decode("EMBOTELLADORA SAN MIGUEL DEL SUR S.A.C., con R.U.C. No. 20413940568, con domicilio principal en Calle Florida N° 204-206 - Huaranguillo - Sachaca - Arequipa y sucursal en Panamericana Norte KM 154 – Huaura, debidamente representada por su Representante Legal, Señor Eber Valdez Nolasco, identificado con DNI No. 15693253, según facultades inscritas en la partida Electrónica N° 01194749 en el Registro de Personas Jurídicas de la Oficina Registral de Arequipa, Sede Arequipa; y, de la otra parte:");
 	$pdf->MultiCell(0,5,$p1);
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	#capitulo 2
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(0,0,"II.	DATOS DEL TRABAJADOR:",'I');
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,"	Nombres",1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	'.$registro->appa_trab.' '.$registro->apma_trab.' '.$registro->nomb_trab);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,"	DNI",1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	'.$registro->nume_dni);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 	
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Dirección"),1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	'.$registro->dire_trab);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,"	Puesto",1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	'.$registro->desc_carg);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Remuneración Bruta Básica"),1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	S./ '.$registro->mont_cont);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Base legal del Contrato"),1,0,'I',false);
 	$pdf->SetFont('Arial','',9);
 	$nom = utf8_decode('	'.$registro->desc_cond);
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	/*$pdf->SetFont('Arial','B',11);
+	/*$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Plazo del Contrato"),1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 
@@ -146,14 +146,14 @@
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);*/
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Inicio"),1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode('	'.date("d/m/Y", strtotime($registro->fech_inic)));
 	$pdf->Cell(0,7,$nom,1,0,'',false);
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(65,7,utf8_decode("	Término"),1,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	
@@ -167,10 +167,10 @@
 	$pdf->Ln(15);
 
 	#linea2
-	$pdf->SetFont('Arial', '', 11);
+	$pdf->SetFont('Arial', '', 10);
 	$l2 = utf8_decode("Ambas partes declaran haber celebrado libremente el presente contrato, en los términos, condiciones y cláusulas siguientes:");
 	$pdf->MultiCell(0,5,$l2);
-	$pdf->Ln(10);	
+	$pdf->Ln(7);	
 
 	$titulos = array("PRIMERO.- ANTECEDENTES", "TERCERO.- Remuneración",
 					 "CUARTO.- Plazo del Contrato", "QUINTO.- Buena Fe Contractual", "SEXTO.- Exclusividad",
@@ -190,49 +190,49 @@
 		$pdf->PrintChapter(utf8_decode($titulos[$i]), $textos[$i]);
 	}
 
-	$pdf->SetFont('Arial','B',11);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(0,1,"SEGUNDO: Del Objeto",'I');
 	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
 	$p1 = utf8_decode("En razón a los argumentos expuestos y a la especial calificación acreditada por EL TRABAJADOR, EL  EMPLEADOR ha decidido, al amparo de lo previsto en el artículo 58º de la LPCL, contratar los servicios temporales de aquella persona para que realice las labores propias y complementarias en el puesto de $registro->desc_carg en atención a la variación sustancial en la demanda de los servicios prestados por EL EMPLEADOR, de acuerdo a las estipulaciones contenidas en este Contrato.");
 	$pdf->MultiCell(0,5,$p1);
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	for ($i=1; $i < 7; $i++) {
 		$pdf->PrintChapter(utf8_decode($titulos[$i]), $textos[$i]);		
 	}
 
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(0,1,"	1.-	RESERVA Y CONFIDENCIALIDAD",'I');
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	$tex = utf8_decode(file_get_contents("../reporte/articulo58/txt8.1.txt"));
    	$tex = ltrim($tex, '?');
 	$pdf->MultiCell(0,5,'	'.$tex);
-	$pdf->Ln(15);
+	$pdf->Ln(7);
 
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(0,0,"	2.-	COMPETENCIA",'I');
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	$tex2 = utf8_decode(file_get_contents("../reporte/articulo58/txt8.2.txt"));
    	$tex2 = ltrim($tex2, '?');
 	$pdf->MultiCell(0,5,'	'.$tex2);
-	$pdf->Ln(10);
+	$pdf->Ln(7);
 
 	for ($i=7; $i < 14; $i++) { 
 		$pdf->PrintChapter(utf8_decode($titulos[$i]), $textos[$i]);
 	}
 
 	#lineas finales
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',10);
 
-	#dividir fecha inicial
-	#$fecha_ini = date("Y-m-d");
+	#restarle una dia a la fecha inicio
 	$fechaant = strtotime('-1 day', strtotime($registro->fech_inic));
 	$fechaant = date("Y-m-d", $fechaant);
 
+	#dividir fecha 'd-m-y'
 	$di = substr($fechaant, 8, 2);
 	$mi = substr($fechaant, 5, 2);
 	$yi = substr($fechaant, 0, 4);
@@ -244,18 +244,18 @@
 
 	$l3 = utf8_decode("Extendido por triplicado en la Ciudad de Huaura el día $di de $nommes del $yi ");
 	$pdf->Cell(0,0,$l3,'D');
-	$pdf->Ln(30);
+	$pdf->Ln(28);
 
 	#firma del trabajador
-	$pdf->SetFont('Arial','',11);
+	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,'________________________________________','R');
 	$pdf->Ln(6);
 
-	$pdf->SetFont('Arial','',10);
+	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,utf8_decode("Nombres:	$registro->appa_trab $registro->apma_trab, $registro->nomb_trab"),'R');
 	$pdf->Ln(6);	
 
-	$pdf->SetFont('Arial','',10);
+	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,utf8_decode("DNI:	$registro->nume_dni"),'R');
 	$pdf->Ln(10);	
 

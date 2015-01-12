@@ -198,13 +198,13 @@ if (isset($_SESSION['codi_usua'])) {
                     require_once("../reporte/art58.php");
                     break;
                 case '03':
-                    require_once("");
+                    require_once("../reporte/suplencia.php");
                     break;
                 case '04':
-                    require_once("");
+                    require_once("../reporte/vacaciones.php");
                     break;
                 case '05':
-                    require_once("");
+                    require_once("../reporte/tmpAlta.php");
                     break;
                 case '06':
                     require_once("");
