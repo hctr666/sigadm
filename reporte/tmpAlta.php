@@ -11,7 +11,7 @@
 	$pdf->AddPage();
 
 	#Colocando el título
-	$pdf->SetFont('Arial','B',13);
+	$pdf->SetFont('Arial','B',12);
 	$title = "CONTRATO INDIVIDUAL DE TRABAJO SUJETO A LA MODALIDAD DE TEMPORADA";
 	$w = $pdf->GetStringWidth($title)+6;
 
@@ -26,69 +26,82 @@
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(10);
 
-	#Antecedentes
+	#primera: el empleador
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"ANTECEDENTES",'I');
-	$pdf->Ln(7);
-
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"Primera:",'I');
-	$pdf->Ln(5);
+	$pdf->Cell(0,0,"PRIMERA: EL EMPLEADOR",'I');
+	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
-	$tex = utf8_decode(file_get_contents("../reporte/suplencia/primera.txt"));
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/primera.txt"));
    	$tex = ltrim($tex, '?');
 	$pdf->MultiCell(0,5,''.$tex);
 	$pdf->Ln(7);
 
+	#segunda: el trabajador
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"Segunda:",'I');
-	$pdf->Ln(5);
+	$pdf->Cell(0,0,"SEGUNDA: EL TRABAJADOR",'I');
+	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("EL EMPLEADOR requiere cubrir temporalmente el puesto de $registro->desc_carg, en el departamento de producción en razón de que el titular de dicho puesto reemplazará puestos por descanso médico.");
+	$text = utf8_decode("EL TRABAJADOR acredita contar con experiencia en labores de $registro->desc_carg, por lo que cumple las exigencias que requiere la posición que desempeñará en la empresa.");
 	$pdf->MultiCell(0,5,$text);
 	$pdf->Ln(7);
 
-	#objeto del contrato
+	#tercera: objeto del contrato
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"OBJETO DEL CONTRATO",'I');
-	$pdf->Ln(7);
-
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"Tercera:",'I');
-	$pdf->Ln(5);
+	$pdf->Cell(0,0,"TERCERA: OBJETO DEL CONTRATO",'I');
+	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("Por lo señalado en la cláusula precedente, EL EMPLEADOR contrata temporalmente los servicios personales del TRABAJADOR, para que se desempeñe como $registro->desc_carg.");
+	$text = utf8_decode("EL EMPLEADOR requiere incrementar temporalmente la producción a fin de atender el incremento de la demanda de bebidas gasificadas y no gasificadas que se origina regularmente todos los años en la Temporada de Verano, la cual el presente año empieza el 15 de diciembre del 2015  y culmina en abril de 2016.");
 	$pdf->MultiCell(0,5,$text);
-	$pdf->Ln(3);
-	$pdf->MultiCell(0,5,utf8_decode("Queda entendido que la prestación de servicios deberá ser efectuada de manera personal, no pudiendo el TRABAJADOR ser reemplazado ni ayudado por tercera persona."));
-	$pdf->Ln(7);
+	$pdf->Ln(4);
+	
+	$text2 = utf8_decode("Teniendo en cuenta este factor objetivo y temporal, EL EMPLEADOR requiere temporalmente contratar personal para el cargo de de $registro->desc_carg.");
+	$pdf->MultiCell(0,5,$text2);
+	$pdf->Ln(4);
 
-	#Jornada de trabajo
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"JORNADA DE TRABAJO",'I');
-	$pdf->Ln(7);
-
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"Cuarta:",'I');
-	$pdf->Ln(5);
+	$text3 = utf8_decode("En razón a los argumentos expuestos y al inicio de la Temporada de Verano, LA EMPRESA contrata los servicios temporales de EL TRABAJADOR al amparo de lo previsto en el artículo 67º de la LPCL para que realice las labores propias y complementarias del puesto de $registro->desc_carg.");
+	$pdf->MultiCell(0,5,$text3);
+	$pdf->Ln(4);	
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode(file_get_contents("../reporte/suplencia/cuarta.txt"));
-   	$text = ltrim($text, '?');
-	$pdf->MultiCell(0,5,$text);
-	$pdf->Ln(25);
-
-	#PLAZO
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"PLAZO",'I');
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/tercera.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
 	$pdf->Ln(7);
 
+	#Cuarta: labores a desarrollar
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,"Quinta:",'I');
-	$pdf->Ln(5);
+	$pdf->Cell(0,0,"CUARTA: LABORES A DESARROLLAR",'I');
+	$pdf->Ln(4);
+	
+	$pdf->SetFont('Arial','',10);
+	$text = utf8_decode("EL EMPLEADOR contrata los servicios de EL TRABAJADOR bajo la modalidad y condiciones estipuladas por el presente contrato para que, en forma personal, individual y subordinada, se desempeñe como de $registro->desc_carg y realice las labores propias y complementarias referidas a su cargo.");
+	$pdf->MultiCell(0,5,$text);
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/cuarta.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);	
+
+	#Quinta: régimen laboral
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("QUINTA: RÉGIMEN LABORAL"),'I');
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/quinta.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);
+
+	#Sexta: PLAZO DE VIGENCIA DE LA RELACIÓN LABORAL 
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("SEXTA: PLAZO DE VIGENCIA DE LA RELACIÓN LABORAL"),'I');
+	$pdf->Ln(4);
 
 		#dividir fecha inicial 'd-m-y'
 		$di = substr($registro->fech_inic, 8, 2);
@@ -114,49 +127,104 @@
 		}
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("La duración del presente Contrato cuenta a partir del $di de $nommes_ini del $yi $fechafin, sin más obligación para las partes que las determinadas por ley; salvo prorroga o renovación expresa a que se refiere la cláusula sexta.");
+	$text = utf8_decode("El plazo de vigencia del presente contrato es el de la Temporada de Verano, esto se inicia el $di de $nommes_ini del $yi y culmina indefectiblemente el $df de $nommes_fin del $yf.");
 	$pdf->MultiCell(0,5,$text);
-	$pdf->Ln(6);
-
-	$pdf->PrintChapter("Sexta:", "../reporte/suplencia/sexta.txt");
-
-	#Remuneración
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,utf8_decode("REMUNERACIÓN"),'I');
 	$pdf->Ln(7);
 
+	#SETIMA: JORNADA Y HORARIO DE TRABAJO
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(0,0,utf8_decode("Sétima:"),'I');
-	$pdf->Ln(5);
+	$pdf->Cell(0,0,utf8_decode("SÉTIMA: JORNADA Y HORARIO DE TRABAJO"),'I');
+	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("EL EMPLEADOR abonará a 'EL TRABAJADOR' como contraprestación económica, por todo concepto, por sus labores una remuneración mensual de S/. $registro->mont_cont con 00/100 Nuevos Soles. ");
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/setima.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);
+
+	#OCTAVA: REMUNERACIÓN 
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("OCTAVA: REMUNERACIÓN"),'I');
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$text = utf8_decode("EL TRABAJADOR, en contraprestación por los servicios realizados, percibirá como remuneración mensual la cantidad de S/. $registro->mont_cont Nuevos Soles, así como las demás bonificaciones y beneficios que otorgue EL EMPLEADOR a todos sus trabajadores, conforme a la normatividad vigente y las disposiciones de EL EMPLEADOR. Estas cifras se encuentran afectas a los impuestos, aportaciones y retenciones que conforme a Ley le correspondan.");
 	$pdf->MultiCell(0,5,$text);
+	$pdf->Ln(4);
+
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/octava.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);
+
+	#NOVENA  : FISCALIZACIÓN DEL USO DE BIENES Y HERRAMIENTAS ENTREGADAS POR EL EMPLEADOR
+	$pdf->SetFont('Arial','B',10);
+	$pdf->MultiCell(0,5,utf8_decode("NOVENA: FISCALIZACIÓN DEL USO DE BIENES Y HERRAMIENTAS ENTREGADAS POR EL EMPLEADOR"),'I');
 	$pdf->Ln(3);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode(file_get_contents("../reporte/suplencia/setima.txt"));
-   	$text = ltrim($text, '?');
-	$pdf->MultiCell(0,5,$text);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/novena.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);	
+
+	#DECIMO : Buena Fe Contractual
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("DÉCIMO: BUENA FE CONTRACTUAL"),'I');
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/decima.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
 	$pdf->Ln(7);
 
-	$pdf->PrintChapter("Octava:", "../reporte/suplencia/octava.txt");
-	$pdf->PrintChapter("Novena:", "../reporte/suplencia/novena.txt");
-	$pdf->PrintChapter(utf8_decode("Décima:"), "../reporte/suplencia/decima.txt");
+	#Décimo primera: Jurisdicción competente
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("DÉCIMO PRIMERA:	JURISDICCIÓN COMPETENTE"),'I');
+	$pdf->Ln(4);
 
-		#restarle una dia a la fecha inicio
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/decprim.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);
+
+	#Décimo segunda: Validez del Contrato
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("DÉCIMO SEGUNDA:	VALIDEZ DEL CONTRATO"),'I');
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/decseg.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(7);	
+
+	#Décimo tercera: De la comunicación a la autoridad
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(0,0,utf8_decode("DÉCIMO TERCERA: DE LA COMUNICACIÓN A LA AUTORIDAD"),'I');
+	$pdf->Ln(4);
+
+	$pdf->SetFont('Arial','',10);
+	$tex = utf8_decode(file_get_contents("../reporte/tmpAlta/decter.txt"));
+   	$tex = ltrim($tex, '?');
+	$pdf->MultiCell(0,5,''.$tex);
+	$pdf->Ln(5);
+
+		#Restarle una dia a la fecha inicio
 		$fechaant = strtotime('-1 day', strtotime($registro->fech_inic));
 		$fechaant = date("Y-m-d", $fechaant);
 		$mesant = $mes::getMes(substr($fechaant, 5, 2));
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("En señal de conformidad las partes suscriben este documento en original y copia en la ciudad de Huaura, a los ".substr($fechaant, 8, 2)." días del mes de $mesant de ".substr($fechaant, 0, 4).".");
+	$text = utf8_decode("Firmado en señal de conformidad y aprobación, en tres ejemplares el día ".substr($fechaant, 8, 2)." de $mesant de ".substr($fechaant, 0, 4).".");
 	$pdf->MultiCell(0,5,$text);
-	$pdf->Ln(27);
+	$pdf->Ln(27);		
 
 	#firma del trabajador
 	$pdf->SetFont('Arial','',9);
-	$pdf->Cell(0,0,'________________________________________','R');
+	$pdf->Cell(0,0,'____________________________________________','R');
 	$pdf->Ln(6);
 
 	$pdf->SetFont('Arial','',9);
@@ -166,7 +234,9 @@
 	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,utf8_decode("DNI:	$registro->nume_dni"),'R');
 
+	#Se da salida al pdf
 	$pdf->Output();
+
  	#cierra el buffer
  	ob_end_flush();
  ?>
