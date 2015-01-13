@@ -10,7 +10,6 @@ class CondicionDAO {
         $lista = MySQL::arrayObject($sql);
         return $lista;
     }
-
 }
 
 ?>

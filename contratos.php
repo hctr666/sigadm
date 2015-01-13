@@ -49,7 +49,7 @@
                         echo "<td>$contrato->mont_cont</td>";
                         //echo "<td>$fecha</td>";            
                         echo "<td align=center><input type='button' name='s' onclick=editContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
-                        echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr') /></td>";
+                        echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
 
                         echo "</tr>";
                     }
@@ -74,6 +74,7 @@
     function editContrato(codi_contr,codi_trab){
         //criterioBuscar = document.frmBuscar.criterioBuscar.value;
         $("#areaTrabajo").load("controller/contratoController.php?accion=editar&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+criterioBuscar);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
     function i(id)
@@ -88,6 +89,7 @@
     function nuevoContrato(){   
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         $("#areaTrabajo").load("controller/contratoController.php?accion=nuevo&criterioBuscar="+criterioBuscar);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
     
     function eliminar(){
@@ -97,11 +99,12 @@
     function buscarContrato()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
-    function impriContrato(id){
+    function impriContrato(id, idtrab){
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
-        var actionPath = "controller/contratoController.php?accion=imprimirContrato&id="+id;
+        var actionPath = "controller/contratoController.php?accion=imprimirContrato&id="+id+"&idtrab="+idtrab;
         var opciones = "toolbar=0, menubar=0,scrollbars=1,width=600,height=400,left=10, top=10,titlebar=no,resizable=1"
         window.open(actionPath, '', opciones);    
     }

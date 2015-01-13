@@ -76,6 +76,7 @@ if (isset($_SESSION['codi_usua'])) {
             if ($trabajadorDAO->editar($trabajador) == 1) {
                 $criterioBuscar = substr($trabajador->appa_trab, 0, 1);
                 $listaTrabajador = $trabajadorDAO->buscar($codi_empr, $criterioBuscar);
+                echo "<script>alert('Los datos del Trabajador se editaron correctamente :)');</script>";
                 require_once '../trabajadorListado.php';
             } else {
                 echo "Error al grabar";
@@ -104,6 +105,7 @@ if (isset($_SESSION['codi_usua'])) {
             if ($trabajadorDAO->agregar($trabajador) == 1) {
                 $criterioBuscar = substr($trabajador->appa_trab, 0, 1);
                 $listaTrabajador = $trabajadorDAO->buscar($codi_empr, $criterioBuscar);
+                echo "<script>alert('Trabajador registrado correctamente :)');</script>";
                 require_once '../trabajadorListado.php';
             } else {
                 echo "Error al grabar";

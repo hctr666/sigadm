@@ -1,5 +1,5 @@
 <center>
-    <H1>
+    <h1>
         <?php 
             if ($agregando <> 1) {
                 echo "EDITAR CONTRATO";
@@ -7,7 +7,7 @@
                 echo "AGREGAR CONTRATO";
             }
          ?>
-    </H1>    
+    </h1>    
     <form name="frmEditar">
         <table>
             <tr>
@@ -43,7 +43,7 @@
                             DataCombo::mostrar('codi_carg', $listaCargo, 'codi_carg', 'desc_carg', '', '');
                         ?></div>
                 </td>
-            </tr>   
+            </tr>
             <tr>
                 <td>Condicion:</td>
                 <td>
@@ -99,9 +99,9 @@
                 <td>
                     <?php
                     if ($agregando <> 1)
-                        echo "<input type='button' name='grabar' onclick='validarUsuario(0,$contrato->codi_trab);' value='Grabar Trabajador'/>";
+                        echo "<input type='button' name='grabar' id='btngrabar' onclick='validarUsuario(0,$contrato->codi_trab, $contrato->codi_contr);' value='Guardar cambios'/>";
                     else
-                        echo "<input type='button' name='grabar' onclick='validarUsuario(1);' value='Grabar Trabajador'/>";
+                        echo "<input type='button' name='grabar' id='btngrabar' onclick='validarUsuario(1);' value='Grabar Contrato'/>";
                     ?>
                 </td>
                 <td>
@@ -110,22 +110,26 @@
                     <input type='hidden' name='agregando' value='<?=$agregando?>' />                    
                     <input type='hidden' name='codi_contr' value='<?=$codi_contr?>' />                    
                     <input type='hidden' name='codi_trab' value='<?=$contrato->codi_trab?>' />                    
-                    <input type='hidden' name='nombre' value='<?=$contrato->nombre?>' />           
-
+                    <input type='hidden' name='nombre' value='<?=$contrato->nombre?>' />
                 </td>
             </tr>
         </table>
+        </div>
     </form>
 </center>
 <script src="js/DatePicker.js"></script>
+
 <script>
-    
+ 
+    codi_cond = encodeURIComponent(document.frmEditar.codi_cond.value);
+
     $(function() {
         $("#fecha").datepicker({
             changeMonth: true,
             changeYear: true
         });
     });
+
     function actu()
     {
         agregando= document.frmEditar.agregando.value;
@@ -141,7 +145,7 @@
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
     }
 
-    function validarUsuario(agregando,id) {
+    function validarUsuario(agregando,id, idcontr) {
         idnombre= document.getElementById("txtNombre");
         nombre=encodeURIComponent(idnombre.value);
         codi_trab= encodeURIComponent(document.frmEditar.codi_trab.value);        
@@ -180,7 +184,7 @@
             document.frmEditar.fech_inic.focus();
             return;
         }
-        if (fech_fin.length == 0) {
+        if (fech_fin.length == 0 && indt_cont == 0) {
             alert("Debes ingresar Fecha Fin");
             document.frmEditar.fech_fin.focus();
             return;
@@ -196,17 +200,21 @@
             return;
         }
         
-        if(agregando == 0){            
-            //alert(codi_tipo +" - "+ codi_carg+" - "+codi_cond+ " - " +fech_inic+" - "+fech_fin+" - "+indt_cont+" - "+ mont_cont);
-            $("#area2").load("controller/contratoController.php?accion=grabar_editar&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);
-            $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
-        } else
-            $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);   
-            $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
+        if (codi_tipo != '3') {
+            if(agregando == 0){            
+                //alert(codi_tipo +" - "+ codi_carg+" - "+codi_cond+ " - " +fech_inic+" - "+fech_fin+" - "+indt_cont+" - "+ mont_cont);
+                $("#area2").load("controller/contratoController.php?accion=grabar_editar&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);
+                $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
+            } else {
+                $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);   
+                $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
+            }
+        } else {
+            cargarPracticanteData(agregando, id, idcontr);
+        }
     }
  
-    function cargarBuscadorTrabajador()
-    {
+    function cargarBuscadorTrabajador(){
         //var contenidoHTML = '<h1>Ventana Modal Basica</h1><p>Un ventana modal con la configuracion basica necesaria para su practico funcionamiento. Bastara con especificar el contenido a mostrar (en formato de marcas HTML) y las dimensiones de la ventana: ancho y alto. Mejoras mas adelante por ahora eso es todo amigos!</p><p><a href=\'http://www.ribosomatic.com/\'>Mas detalles...</a></p><center><button onclick=\"closeModal()\">Cerrar</button></center>';
         var ancho = 700; 
         var alto = 350;
@@ -223,8 +231,6 @@
         bgdiv.css('opacity','0.6');
         bgdiv.css('filter','alpha(opacity=60)');
         
-        
-
         $('body').append(bgdiv);
         
         var wscr = $(window).width();
@@ -232,9 +238,7 @@
                 
         $('#bgtransparent').css("width", wscr);
         $('#bgtransparent').css("height", hscr);
-        
-
-        
+               
         // ventana flotante
         var moddiv = $('<div>').attr({
             className: 'bgmodal',
@@ -273,9 +277,79 @@
         $('#bgmodal').css("top", mtop+'px');
         //alert('Usted no esta autorizado para usar esta funcion');
 
-
         $("#bgmodal").load("controller/menuOpcionesController.php?accion=trabajador&val=0&buscar=si&criterioBuscar=''");
     }
+
+    function cargarPracticanteData(agregando, id, idcontr){
+        //var contenidoHTML = '<h1>Ventana Modal Basica</h1><p>Un ventana modal con la configuracion basica necesaria para su practico funcionamiento. Bastara con especificar el contenido a mostrar (en formato de marcas HTML) y las dimensiones de la ventana: ancho y alto. Mejoras mas adelante por ahora eso es todo amigos!</p><p><a href=\'http://www.ribosomatic.com/\'>Mas detalles...</a></p><center><button onclick=\"closeModal()\">Cerrar</button></center>';
+        var ancho = 600; 
+        var alto = 300;
+        
+        var bgdiv = $('<div>').attr({
+            className: 'bgtransparent',
+            id: 'bgtransparent'
+        });
+
+        bgdiv.css('position','fixed');
+        bgdiv.css('left','0');
+        bgdiv.css('top','0');
+        bgdiv.css('background-color','#000');
+        bgdiv.css('opacity','0.6');
+        bgdiv.css('filter','alpha(opacity=60)');
+        
+        $('body').append(bgdiv);
+        
+        var wscr = $(window).width();
+        var hscr = $(window).height();
+                
+        $('#bgtransparent').css("width", wscr);
+        $('#bgtransparent').css("height", hscr);
+               
+        // ventana flotante
+        var moddiv = $('<div>').attr({
+            className: 'bgmodal',
+            id: 'bgmodal'
+        }); 
+        
+        moddiv.css('position','fixed');
+        moddiv.css('border','0.05em solid black');
+        moddiv.css('overflow','auto');
+        moddiv.css('background-color','#fff');
+
+        $('body').append(moddiv);
+        //  $('#bgmodal').append(contenidoHTML);
+        
+        var wscr = $(window).width();
+        var hscr = $(window).height();
+
+        // estableciendo dimensiones de background
+        $('#bgtransparent').css("width", wscr);
+        $('#bgtransparent').css("height", hscr);
+        
+        // definiendo tamaño del contenedor
+        $('#bgmodal').css("width", ancho+'px');
+        $('#bgmodal').css("height", alto+'px');
+        
+        // obtiendo tamaño de contenedor
+        var wcnt = $('#bgmodal').width();
+        var hcnt = $('#bgmodal').height();
+        
+        // obtener posicion central
+        var mleft = ( wscr - wcnt ) / 2;
+        var mtop = ( hscr - hcnt ) / 2;
+        
+        // estableciendo posicion
+        $('#bgmodal').css("left", mleft+'px');
+        $('#bgmodal').css("top", mtop+'px');
+        //alert('Usted no esta autorizado para usar esta funcion');
+
+        if (agregando == 1) {
+           $("#bgmodal").load("controller/contratoController.php?accion=practicanteData&agregando="+agregando+"&codi_trab="+id+"&codi_contr="+idcontr+"&codi_cond="+codi_cond);
+        } else {
+            $("#bgmodal").load("controller/contratoController.php?accion=practicanteDataEdt&agregando="+agregando+"&codi_trab="+id+"&codi_contr="+idcontr+"&codi_cond="+codi_cond);
+        }
+    }
+
     function closeModal(){
         $('#bgmodal').remove();
         $('#bgtransparent').remove();

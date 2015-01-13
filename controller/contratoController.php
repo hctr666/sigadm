@@ -45,12 +45,12 @@ if (isset($_SESSION['codi_usua'])) {
             $codi_trab = '';//$_GET['codi_trab'];
             $codi_contr ='';// $_GET['codi_contr'];
             $criterioBuscar = $_GET['criterioBuscar'];
-            require_once '../modelo/TrabajadorDAO.php';
-            require_once '../modelo/Trabajador.php';
+            #require_once '../modelo/TrabajadorDAO.php';
+            #require_once '../modelo/Trabajador.php';
             $agregando = true;
-            $trabajador = new Trabajador();
+            /*$trabajador = new Trabajador();
             $trabajadorDAO = new TrabajadorDAO();
-            //$registro = $trabajadorDAO->seleccionar($codi_empr, $codi_trab);
+            $registro = $trabajadorDAO->seleccionar($codi_empr, $codi_trab);*/
             
             require_once '../modelo/ContratoDAO.php';
             require_once '../modelo/Contrato.php';
@@ -63,8 +63,7 @@ if (isset($_SESSION['codi_usua'])) {
             require_once '../modelo/TipoDAO.php';
             $tipoDAO = new TipoDAO();
             $listaTipo = $tipoDAO->listar($codi_empr);
-            
-            
+                        
             require_once '../modelo/CargoDAO.php';
             require_once '../modelo/Cargo.php';
             $cargo = new Cargo($codi_empr, '', '', '1');
@@ -77,6 +76,7 @@ if (isset($_SESSION['codi_usua'])) {
             $listaCondicion = $condicionDAO->listar($codi_empr);
             require_once '../contratoEditar.php';
             break;
+
         case 'editar':
             $codi_trab = $_GET['codi_trab'];
             $codi_contr = $_GET['codi_contr'];
@@ -103,8 +103,7 @@ if (isset($_SESSION['codi_usua'])) {
             require_once '../modelo/TipoDAO.php';
             $tipoDAO = new TipoDAO();
             $listaTipo = $tipoDAO->listar($codi_empr);
-            
-            
+                        
             require_once '../modelo/CargoDAO.php';
             require_once '../modelo/Cargo.php';
             $cargo = new Cargo($codi_empr, '', '', $contrato->codi_tipo);
@@ -115,7 +114,7 @@ if (isset($_SESSION['codi_usua'])) {
             require_once '../modelo/Condicion.php';
             $condicionDAO = new CondicionDAO();
             $listaCondicion = $condicionDAO->listar($codi_empr);
-            
+
             require_once '../contratoEditar.php';
             break;
             
@@ -145,15 +144,47 @@ if (isset($_SESSION['codi_usua'])) {
             if ($contratoDAO->editar($contrato) == 1) {
                 $criterioBuscar = substr($_GET['nombre'], 0, 1);
                 $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
-                require_once '../contratos.php';
+                echo "<script>alert('Contrato editado correctamente :)');</script>";
             }
+
+            if ($contrato->codi_tipo == '3') {
+
+                require_once '../modelo/DetallePracticante.php';    
+                require_once '../modelo/DetallePracticanteDAO.php'; 
+
+                $detallePrac = new DetallePracticante();
+                $detallePracdao = new DetallePracticanteDAO();
+
+                $detallePrac->codi_empr = $contrato->codi_empr;
+                $detallePrac->situ_prac = $_GET['situ_prac'];
+                $detallePrac->codi_cfp = $_GET['codi_cfp'];
+                $detallePrac->codi_trab = $_GET['codi_trab'];
+                $detallePrac->codi_contr = $contrato->codi_contr;
+                #echo "<script>alert('contrato nro:' $detallePrac->codi_contr );</script>";
+                #echo "<script>alert('trabajador nro: $detallePrac->codi_trab' );</script>";             
+                $detallePrac->esp_prac = $_GET['esp_prac'];
+                $detallePrac->mcap_prac = $_GET['mcap_prac'];
+
+                #grabar la data del practicante
+                if ($detallePracdao->editarPracticante($detallePrac) == 1) {
+                    //echo "<script>alert('se agregó el practicante');</script>";
+                    $criterioBuscar = substr($_GET['nombre'], 0, 1);
+                    $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
+                } else {
+                    echo "<script>alert('No se agregó nada :(');</script>";
+                }
+            }
+            
+            require_once '../contratos.php';
             break;
+
         case 'grabar_nuevo':
             require_once '../modelo/ContratoDAO.php';
             require_once '../modelo/Contrato.php';
+
             $contrato = new Contrato();
             $contrato->codi_empr = $codi_empr;
-            $contrato->codi_contr = $_GET['codi_contr'];
+            #$contrato->codi_contr = $_GET['codi_contr'];
             $contrato->codi_trab = $_GET['codi_trab'];
             $contrato->codi_tipo = $_GET['codi_tipo'];
             $contrato->codi_carg = $_GET['codi_carg'];
@@ -169,16 +200,50 @@ if (isset($_SESSION['codi_usua'])) {
             $dayFin = substr($_GET['fech_fin'], 0, 2);
             $contrato->fech_fin = $yearFin . '-' . $monthFin . '-' . $dayFin;
             $contrato->codi_empr = $codi_empr;
+
+            #grabar la data del contrato
             $contratoDAO = new ContratoDAO();
-            
+
             if ($contratoDAO->agregar($contrato) == 1) {
                 $criterioBuscar = substr($_GET['nombre'], 0, 1);
                 $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
-                require_once '../contratos.php';
+                echo "<script>alert('Contrato agregado correctamente :)');</script>";
             }
+
+            #si el contrato es como practicante
+            if ($contrato->codi_tipo == '3') {
+
+                require_once '../modelo/DetallePracticante.php';    
+                require_once '../modelo/DetallePracticanteDAO.php'; 
+
+                $detallePrac = new DetallePracticante();
+                $detallePracdao = new DetallePracticanteDAO();
+
+                $detallePrac->codi_empr = $contrato->codi_empr;
+                $detallePrac->situ_prac = $_GET['situ_prac'];
+                $detallePrac->codi_cfp = $_GET['codi_cfp'];
+                $detallePrac->codi_trab = $_GET['codi_trab'];
+                #echo "<script>alert('contrato nro:' $detallePrac->codi_contr );</script>";
+                #echo "<script>alert('trabajador nro: $detallePrac->codi_trab' );</script>";             
+                $detallePrac->esp_prac = $_GET['esp_prac'];
+                $detallePrac->mcap_prac = $_GET['mcap_prac'];
+
+                #grabar la data del practicante
+                if ($detallePracdao->agregarPracticante($detallePrac) == 1) {
+                    //echo "<script>alert('se agregó el practicante');</script>";
+                    $criterioBuscar = substr($_GET['nombre'], 0, 1);
+                    $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
+                } else {
+                    echo "<script>alert('No se agregó nada :(');</script>";
+                }
+            }
+
+            require_once '../contratos.php';
             break;
+
         case 'imprimirContrato':
             $id = $_GET['id'];
+            $idtrab = $_GET['idtrab'];
             $codi_empr = $_SESSION['codi_empr'];
             require_once '../modelo/ContratoDAO.php';
             require_once '../modelo/Contrato.php';
@@ -188,6 +253,7 @@ if (isset($_SESSION['codi_usua'])) {
             $contrato->codi_empr = $codi_empr;
             $contrato->codi_contr = $id;
             $registro = $contratoDAO->seleccionarImpre($codi_empr,$id);
+            $reg2 = $contratoDAO->seleccionarImpre2($codi_empr, $id, $idtrab);
 
             //$_SESSION["contrato"] = $registro;
             switch ($registro->codi_cond) {
@@ -216,16 +282,55 @@ if (isset($_SESSION['codi_usua'])) {
                     require_once("../reporte/art57sin.php");
                     break;
                 case '09':
-                    require_once("");
+                    require_once("../reporte/preprof.php");
                     break;
                 case '10':
-                    require_once("");
+                    require_once("../reporte/prof.php");
                     break;      
             }
 
-            break;
+        #frm para agregar datos del practicante
+        case 'practicanteData':
+            $agregando = $_GET['agregando'];
+            $codi_cond = $_GET['codi_cond'];
+            #$codi_trab = $_GET['codi_trab'];
+            #$codi_contr = $_GET['codi_contr'];
+
+            require_once '../modelo/CFProfesionalDAO.php';
+            require_once '../modelo/CFProfesional.php';
             
+            $cfp = new CFProfesional($codi_empr, '', '', '', '', '');
+            $cfpdao = new CFProfesionalDAO();
+            $listaCfprof = $cfpdao->listar($codi_empr);
+
+            require_once("../contrPracticanteFrmModal.php");        
+            break;
+
+        #frm para editar datos del practicante
+        case 'practicanteDataEdt':
+            $agregando = $_GET['agregando'];
+            $codi_cond = $_GET['codi_cond'];
+            $codi_trab = $_GET['codi_trab'];
+            $codi_contr = $_GET['codi_contr'];
+            $codi_empr = $_SESSION['codi_empr'];
+
+            require_once '../modelo/DetallePracticante.php';
+            require_once '../modelo/DetallePracticanteDAO.php';
+
+            $detapradao = new DetallePracticanteDAO();
+            $registro = $detapradao->listarPor($codi_empr, $codi_trab, $codi_contr);
+            
+            require_once '../modelo/CFProfesionalDAO.php';
+            require_once '../modelo/CFProfesional.php';
+            
+            $cfp = new CFProfesional($codi_empr, $registro->codi_cfp, '', '', '', '');
+            $cfpdao = new CFProfesionalDAO();
+            $listaCfprof = $cfpdao->listar($codi_empr);       
+
+            require_once("../contrPracticanteFrmModal.php");        
+
     }
+
 } else {
     echo 'Usted no tiene acceso';
 }

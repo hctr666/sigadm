@@ -84,7 +84,7 @@ if ($agregando <> 1) {
                 <td>
                     <?php
                     if ($agregando <> 1)
-                        echo "<input type='button' name='grabar' onclick='validarUsuario(0,$registro->codi_trab);' value='Grabar Trabajador'/>";
+                        echo "<input type='button' name='grabar' onclick='validarUsuario(0,$registro->codi_trab);' value='Guardar Cambios'/>";
                     else
                         echo "<input type='button' name='grabar' onclick='validarUsuario(1);' value='Grabar Trabajador'/>";
                     ?>

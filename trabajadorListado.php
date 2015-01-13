@@ -86,7 +86,9 @@
         criterioBuscar = document.frmBuscar.criterioBuscar.value;  
         buscar= document.frmBuscar.buscar.value; 
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=editar&id="+id+"&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;  
     }
+    
     function i(id)
     {
         var actionPath = "controller/trabajadorController.php?accion=imprimir&id="+id;
@@ -97,6 +99,7 @@
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         buscar= document.frmBuscar.buscar.value; 
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=nuevo&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
     function eliminar(){
         alert('Usted no puede utilizar esta opción');
@@ -106,5 +109,6 @@
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         buscar= document.frmBuscar.buscar.value;    
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&val=0&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 </script>

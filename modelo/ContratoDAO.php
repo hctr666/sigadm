@@ -71,14 +71,25 @@ class ContratoDAO {
 
     function seleccionarImpre($codi_empr,$id) {
     
-       $sql= "SELECT c.*, t.appa_trab, t.apma_trab, t.nomb_trab, t.nume_dni, g.desc_carg, o.desc_cond, d.desc_dist, t.dire_trab, t.fech_naci 
+       $sql= "SELECT c.*, t.appa_trab, t.apma_trab, t.nomb_trab, t.nume_dni, g.desc_carg, o.desc_cond, d.desc_dist, t.dire_trab, t.fech_naci
               FROM contrato c INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr 
                               INNER JOIN cargo g on c.codi_carg=g.codi_carg and c.codi_empr=g.codi_empr 
                               INNER JOIN condicion o on c.codi_cond=o.codi_cond and c.codi_empr=o.codi_empr 
-                              INNER JOIN distrito d on t.codi_dist=d.codi_dist and t.codi_empr=d.codi_empr  
+                              INNER JOIN distrito d on t.codi_dist=d.codi_dist and t.codi_empr=d.codi_empr
+                              
+
               WHERE c.codi_empr='$codi_empr' and c.codi_contr='$id' ";        
        $lista=MySQL::arrayObject($sql);       
        return $lista[0];
+    }
+
+    function seleccionarImpre2($codi_empr, $id, $codi_trab){
+        $sql = "SELECT dp.*, cf.desc_cfp, cf.ruc_cfp, cf.dir_cfp, cf.rep_cfp
+                FROM detalle_practic dp INNER JOIN cfprof cf on dp.codi_cfp=cf.codi_cfp
+                WHERE dp.codi_empr='$codi_empr' and dp.codi_contr='$id' and dp.codi_trab='$codi_trab'";
+
+        $lista = MySQL::arrayObject($sql);
+        return $lista[0];
     }
 
     function agregar(Contrato $contrato) {

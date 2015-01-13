@@ -32,7 +32,7 @@
     
     <?php
         if(count($listaTrabajador)==0){
-            echo "<font color='red'>¡No existen elementos con ese criterio!</font>";
+            echo "<font color='red'>丯o existen elementos con ese criterio!</font>";
         }
     ?>
     <br/>    
