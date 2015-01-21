@@ -1,9 +1,15 @@
 <center>
     <h1>Listado de Condiciones Laborales</h1>
     <form name='FrmAreas'>
-        <table border="1">
-            <tr><th>Código</th><th>Descripción</th><th>Editar</th>
-            </tr>
+        <table class="ismtable">
+        	<thead>
+	            <tr>
+	            	<th>Código</th>
+	            	<th>Descripción</th>
+	            	<th>Editar</th>
+	            </tr>
+        	</thead>
+        	<tbody>
             <?php
             foreach ($listaCondicion as $condicion) {
                 echo "<tr>";
@@ -13,6 +19,7 @@
                 echo "</tr>";
             }
             ?>
+            </tbody>
         </table>
         <br/>
         <input type='button' name='nuevo' onclick='enContruccion()' value='Agregar Cargo' />

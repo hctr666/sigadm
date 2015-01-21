@@ -12,9 +12,14 @@ session_start();
         <link href="css/jquery-ui.css"  rel="stylesheet"/>
         <link href="css/estilo.css"  rel="stylesheet"/>
         <script type="text/javascript" src="js/jquery-1.10.2.js" ></script>           
-        <script type="text/javascript" src="js/jquery-ui.js"  ></script> 
-        
+        <script type="text/javascript" src="js/jquery-ui.js"  ></script>   
     </head>
+    <style>
+    	#button{
+    		width:100px;
+    		height:25px;
+    	}
+    </style>
     <body >   
         <div id="principal">
             <div id="cabecera">
@@ -26,7 +31,8 @@ session_start();
                         <td><div id="encabezado"  >
                                 <div id="empresa" style="float:left;width:50%;color:#FFFFFF;padding-left: 30px;font-size: 8pt; ">&nbsp;</div>
                                 <div style="float:left;width:50%;text-align: right; color:#FFFFFF; "><div></div></div>
-                            </div></td>
+                            </div>
+                        </td>
                     </tr>
 
                 </table>
@@ -62,7 +68,7 @@ session_start();
                 <tr>
                     <td >&nbsp;</td>
                     <td ><br/>
-                        <input type="button" name="button" class="estiloboton" id="button" value="Iniciar" onclick="validarUsuario()" />
+                        <input type="submit"  name="button" class="estiloboton" id="button" value="Iniciar" onclick="validarUsuario()" />
                         <input type="hidden" name="accion" value="validar"/>                                
                     </td>
                 </tr>
@@ -73,7 +79,7 @@ session_start();
 
             </div>
 
-            <div class="pie">Sistema de GestiÃ³n Administrativa Virtual  - Gestor 2014 - Derechos Reservados
+            <div class="pie">Sistema de Gestión Administrativa Virtual  - Gestor 2014 - Derechos Reservados
             </div>
         </div>
 
@@ -118,7 +124,18 @@ session_start();
             function ocultarCargando() {
                 document.getElementById("cargando").innerHTML = "";
             }
-            
-           
+
+	//asignar botón por defecto
+    $(document).ready(function () {
+        $("input").bind("keydown", function (event) {
+            var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+            if (keycode == 13) {
+                document.getElementById('button').click();
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });      
 
 </script>

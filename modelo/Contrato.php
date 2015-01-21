@@ -12,7 +12,10 @@ class Contrato {
     var $fech_fin;
     var $indt_cont;
     var $mont_cont;
-
+    var $codi_area;
+    var $ref_cont;
+    var $cesado;
+    var $fech_emo;
 }
 
 ?>

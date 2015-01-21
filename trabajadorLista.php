@@ -1,3 +1,10 @@
+<?php 
+	if ($buscar == 'si') {
+		echo "<div style='padding:20px;'>";
+	} else {
+		echo "<div>";
+	}
+ ?>
 <center>
     <?php
         if ($buscar == 'si'){
@@ -23,14 +30,17 @@
             </tr>        
         </table>
         <div id="detalleBusqueda">    </div>
-        <?php
-            if ($buscar == 'si') {
-                echo "<input type=button onclick='closeModal()' value='Cancelar Busqueda' />";
-            }
-                echo "<input type=hidden name=buscar value='$buscar' />";
-        ?>
+        <div style="padding-top:15px;">	
+	        <?php
+	            if ($buscar == 'si') {
+	                echo "<input type=button onclick='closeModal()' value='Cancelar Busqueda' />";
+	            }
+	                echo "<input type=hidden name=buscar value='$buscar' />";
+	        ?>
+        </div>
     </form>
 </center>
+</div>
 <script>
 
     val = document.frmBusquedaTrabajador.val.value;

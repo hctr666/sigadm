@@ -4,21 +4,28 @@
             echo "<br/>";
         } else if(isset($criterioBuscar) && $criterioBuscar != ""){
             echo "<h3>Listado de Trabajadores que empiecen con '$criterioBuscar'</h3>";
-            echo $buscar;       
         } else {
             echo "<h3>Listado de Trabajadores</h3>";
         }
     ?>
     <form name=frmBuscar>
-        <table border="1">
-            <tr><th>Codigo</th><th>Ap. Paterno</th><th>Ap. Materno</th><th>Nombre</th><th>DNI</th>
-                <?php
-                if ($buscar=='no')
-                    echo "<th>Dirección</th><th>Distrito</th><th>F/Naci.</th><th>Editar</th><th>Imprimir</th>";
-                else
-                    echo "<th>Seleccionar</th>";
-                ?>
-            </tr>
+        <table class="ismtable">
+            <thead>
+            	<tr>
+            		<th>Codigo</th>
+            		<th>Ap. Paterno</th>
+            		<th>Ap. Materno</th>
+            		<th>Nombre</th>
+            		<th>DNI</th>
+		                <?php
+		                if ($buscar=='no')
+		                    echo "<th>Dirección</th><th>Distrito</th><th>F/Naci.</th><th>Editar</th><th>Imprimir</th>";
+		                else
+		                    echo "<th>Seleccionar</th>";
+		                ?>
+            	</tr>
+            </thead>
+            <tbody>
             <?php
             if (count($listaTrabajador) > 0) {
                 foreach ($listaTrabajador as $trabajador) {
@@ -46,8 +53,9 @@
                 }
             }
             ?>
-        </table><br/>    
-        
+            </tbody>
+        </table>
+        <br/>
         <input type='hidden' name='criterioBuscar'  value='<?=$criterioBuscar;?>' />
         <input type='hidden' name='buscar'  value='<?=$buscar;?>' />
 
@@ -86,8 +94,8 @@
         criterioBuscar = document.frmBuscar.criterioBuscar.value;  
         buscar= document.frmBuscar.buscar.value; 
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=editar&id="+id+"&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
-        document.body.scrollTop = document.documentElement.scrollTop = 0;  
-    }
+		subir();
+	}
     
     function i(id)
     {
@@ -99,7 +107,7 @@
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         buscar= document.frmBuscar.buscar.value; 
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=nuevo&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        subir();
     }
     function eliminar(){
         alert('Usted no puede utilizar esta opción');

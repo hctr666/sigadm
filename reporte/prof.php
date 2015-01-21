@@ -170,14 +170,14 @@
 	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(70,7,utf8_decode("Horario de las prácticas:"),0,0,'I',false);
 	$pdf->SetFont('Arial','',10);
-	$nom = utf8_decode("Lunes a Viernes de 08:00 a 13:15 hrs – 14:00 a 17:30 hrs.");
+	$nom = utf8_decode("Lunes a Viernes de 08:00 a 13:15 hrs - 14:00 a 17:30 hrs.");
 	$pdf->Cell(0,7,$nom,0,0,'',false);
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(70,7,utf8_decode("                  "),0,0,'I',false);
 	$pdf->SetFont('Arial','',10);
-	$nom = utf8_decode("Refrigerio de 13:15 a 14: 00 hrs. Sábados de 08:00 a 12:15 hrs.");
+	$nom = utf8_decode("Refrigerio de 13:15 a 14:00 hrs. Sábados de 08:00 a 12:15 hrs.");
 	$pdf->Cell(0,7,$nom,0,0,'',false);
 	$pdf->Ln(5);
 
@@ -211,8 +211,19 @@
 	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(0,1,utf8_decode("PRIMERO:"),'I');
 	$pdf->Ln(5);
-	$pdf->SetFont('Arial','',10);
-	$tex = utf8_decode(file_get_contents("../reporte/prof/primero.txt"));
+
+		#fecha de presentación
+		$dp = substr($reg2->fpres_prac, 8, 2);
+		$mp = substr($reg2->fpres_prac, 5, 2);
+		$yp = substr($reg2->fpres_prac, 0, 4);
+
+		#el nombre del mes
+		require_once('../util/fechas.php');
+		$mes = new Fechas();
+		$mp = $mes::getMes($mp);
+
+	$pdf->SetFont('Arial','',10);	
+	$tex = utf8_decode("El Decano de la Facultad de $reg2->facu_prac (El CENTRO DE FORMACIÓN PROFESIONAL que presenta a el (la) egresado (a) mediante comunicación de fecha $dp de $mp del $yp, presenta a EL (LA) EGRESADO (A)  para que se le permita realizar sus Prácticas Profesionales en LA EMPRESA.");
    	$tex = ltrim($tex, '?');
 	$pdf->MultiCell(0,5,$tex);
 	$pdf->Ln(7);

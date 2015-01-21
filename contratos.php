@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <center>
     <!--<font color="#1d537f"><h1>Gestión de Contratos</h1></font>-->
     <?php 
@@ -11,19 +12,24 @@
         <div id='edicionContrato'>
         <!--<h3>Listado de Contratos:</h3>-->
         <form name=frmBuscar>
-            <table border="1">
-                <tr><th>Codigo</th>
+            <table class="ismtable">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
                     <th>Nombre</th>                        
                     <th>Tipo</th>            
                     <th>Cargo</th>
                     <th>Condicion</th>
                     <th>Fech. Inic</th>
                     <th>Fech. Fin</th>            
-                    <th ALIGN='CENTER'> Indt.</th>            
-
+                    <!--<th Indt.</th>-->           
                     <th>Monto</th>                                    
                     <th>Editar</th>
-                    <th>Imprimir</th></tr>
+                    <th>Cese</th>
+                    <th>Imprimir</th>
+                </tr>
+            </thead>
+            <tbody>     
                 <?php
                 if (count($listacontratos) > 0) {
                     foreach ($listacontratos as $contrato) {
@@ -35,30 +41,40 @@
                         echo "<td>$contrato->nombre</td>";
                         echo "<td>$contrato->desc_tipo</td>";
                         echo "<td>$contrato->desc_carg</td>";
-                        echo "<td>$contrato->desc_cond</td>";
+                        if ($contrato->indt_cont==1) {
+                            echo "<td>$contrato->desc_cond</td>";
+                        } else {
+                            echo "<td  ALIGN='CENTER'>-</td>";
+                        }
                         echo "<td>$fechaIni</td>";                        
-                        if($contrato->indt_cont==1){
+                        if($contrato->indt_cont==0){
                             echo "<td>Indeterminado</td>";
-                            echo "<td  ALIGN='CENTER' >Si</td>";
+                            #echo "<td  ALIGN='CENTER' >Si</td>";
                         }
                         else{
                             echo "<td>$fechaFin</td>";
-                            echo "<td  ALIGN='CENTER'>No</td>";
+                            #echo "<td  ALIGN='CENTER'>No</td>";
                         }
                         
                         echo "<td>$contrato->mont_cont</td>";
                         //echo "<td>$fecha</td>";            
-                        echo "<td align=center><input type='button' name='s' onclick=editContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
-                        echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
-
+                        echo "<td align=center><input type='button' name='s' onclick=editContrato('$contrato->codi_contr','$contrato->codi_trab','$contrato->codi_cond',$contrato->indt_cont) /></td>";
+                        
+                        if ($contrato->indt_cont == 0) {
+                            echo "<td align=center><input disabled='true' type='button' name='i' onclick=ceseContrato('$contrato->codi_contr','$contrato->codi_trab')></td>";
+                            echo "<td align=center><input disabled='true' type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
+                        } else {
+                            echo "<td align=center><input type='button' name='i' onclick=ceseContrato('$contrato->codi_contr','$contrato->codi_trab')></td>";
+                            echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
+                        }
                         echo "</tr>";
                     }
                 }
                 ?>
+            <tbody>
             </table><br/>    
 
             <input type='hidden' name='criterioBuscar'  value='<?=$criterioBuscar;?>' />
-
             <?php
             if (count($listacontratos) == 0) {
                 echo "<font color='red'>¡No existen contratos para el trabajador seleccionado!</font>";
@@ -71,14 +87,21 @@
     </div>
 </center>
 <script>
-    function editContrato(codi_contr,codi_trab){
+    function editContrato(codi_contr,codi_trab,codi_cond,indt_cont){
         //criterioBuscar = document.frmBuscar.criterioBuscar.value;
-        $("#areaTrabajo").load("controller/contratoController.php?accion=editar&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+criterioBuscar);
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        $("#areaTrabajo").load("controller/contratoController.php?accion=editarContrato&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+criterioBuscar+"&codi_cond="+codi_cond+"&indt_cont="+indt_cont);
+        subir();
     }
 
-    function i(id)
-    {
+    function ceseContrato(codi_contr, codi_trab){
+        creaModal(400,200);
+        criterio = document.frmBuscar.criterioBuscar.value;
+        $("#bgmodal").load("controller/contratoController.php?accion=seleccionadorCese&codi_contr="+codi_contr+"&codi_trab="+codi_trab);
+
+    }
+
+    function i(id) {
+        subir();
         //criterioBuscar = document.frmBuscar.criterioBuscar.value;   
         //$("#areaTrabajo").load("controller/trabajadorController.php?accion=editar&id="+id+"&criterioBuscar="+criterioBuscar);
         var actionPath = "controller/trabajadorController.php?accion=imprimir&id="+id;
@@ -87,9 +110,86 @@
     }
     
     function nuevoContrato(){   
-        criterioBuscar = document.frmBuscar.criterioBuscar.value;    
-        $("#areaTrabajo").load("controller/contratoController.php?accion=nuevo&criterioBuscar="+criterioBuscar);
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        //criterioBuscar = document.frmBuscar.criterioBuscar.value;    
+        //$("#areaTrabajo").load("controller/contratoController.php?accion=nuevo&criterioBuscar="+criterioBuscar);
+        subir();
+        agregando = 0;
+        cargaSeleccionador(650,200,0);
+    }
+
+    function creaModal(w,h){
+        var ancho = w; 
+        var alto = h;
+        
+        var bgdiv = $('<div>').attr({
+            className: 'bgtransparent',
+            id: 'bgtransparent'
+        });
+
+        bgdiv.css('position','fixed');
+        bgdiv.css('left','0');
+        bgdiv.css('top','0');
+        bgdiv.css('background-color','#000');
+        bgdiv.css('opacity','0.6');
+        bgdiv.css('filter','alpha(opacity=60)');
+        
+        $('body').append(bgdiv);
+        
+        var wscr = $(window).width();
+        var hscr = $(window).height();
+                
+        $('#bgtransparent').css("width", wscr);
+        $('#bgtransparent').css("height", hscr);
+               
+        // ventana flotante
+        var moddiv = $('<div>').attr({
+            className: 'bgmodal',
+            id: 'bgmodal'
+        }); 
+        
+        moddiv.css('position','fixed');
+        moddiv.css('border','0.05em solid black');
+        moddiv.css('overflow','auto');
+        moddiv.css('background-color','#fff');
+
+        $('body').append(moddiv);
+        //  $('#bgmodal').append(contenidoHTML);
+        
+        var wscr = $(window).width();
+        var hscr = $(window).height();
+
+        // estableciendo dimensiones de background
+        $('#bgtransparent').css("width", wscr);
+        $('#bgtransparent').css("height", hscr);
+        
+        // definiendo tamaño del contenedor
+        $('#bgmodal').css("width", ancho+'px');
+        $('#bgmodal').css("height", alto+'px');
+        
+        // obtiendo tamaño de contenedor
+        var wcnt = $('#bgmodal').width();
+        var hcnt = $('#bgmodal').height();
+        
+        // obtener posicion central
+        var mleft = ( wscr - wcnt ) / 2;
+        var mtop = ( hscr - hcnt ) / 2;
+        
+        // estableciendo posicion
+        $('#bgmodal').css("left", mleft+'px');
+        $('#bgmodal').css("top", mtop+'px');
+        //alert('Usted no esta autorizado para usar esta funcion');
+        criterio = document.frmBuscar.criterioBuscar.value;
+    }
+
+    function cargaSeleccionador(w,h,agr){
+        creaModal(w,h);
+        criterio = document.frmBuscar.criterioBuscar.value;
+        $("#bgmodal").load("controller/contratoController.php?accion=seleccionador&agr="+agr+"&criterioBuscar="+criterio);
+    }
+
+    function closeModal(){
+        $('#bgmodal').remove();
+        $('#bgtransparent').remove();
     }
     
     function eliminar(){
@@ -99,10 +199,12 @@
     function buscarContrato()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        subir();
+        //document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
     function impriContrato(id, idtrab){
+        subir();
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         var actionPath = "controller/contratoController.php?accion=imprimirContrato&id="+id+"&idtrab="+idtrab;
         var opciones = "toolbar=0, menubar=0,scrollbars=1,width=600,height=400,left=10, top=10,titlebar=no,resizable=1"

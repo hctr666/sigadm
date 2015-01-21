@@ -21,7 +21,7 @@
 
 	#párrafo inicial
 	$pdf->SetFont('Arial','',10);
-	$p1 = utf8_decode("Conste por el presente documento, el Contrato de Suplencia que al amparo del Artículo 61º del D.S.-003-97-TR, Texto Único Ordenado del Decreto Legislativo No. 728, Ley de Productividad y Competitividad Laboral, celebran de una parte EMBOTELLADORA SAN MIGUEL DEL SUR S.A.C. (en adelante, 'EL EMPLEADOR'), con Registro Único de Contribuyentes No. 20413940568, con domicilio para estos efectos en la Calle Florida No. 204-206, distrito de Huaranguillo, Sachaca, provincia y departamento de Arequipa y sucursal en Panamericana Norte KM 154 – Distrito de Huaura, provincia de Huaura y Departamento de Lima, debidamente representado por , Señor Eber  Valdez Nolasco, identificado con DNI No. 15693253, según facultades inscritas en la Partida Electrónica N° 1308212 DEL Registro de Personas Jurídicas de Lima  y, de la otra parte; $registro->appa_trab $registro->apma_trab, $registro->nomb_trab; identificado con Documento de Identidad No. $registro->nume_dni con domicilio en $registro->dire_trab, Distrito de $registro->desc_dist; a quien en adelante se le denominará 'EL TRABAJADOR', en los términos y condiciones siguientes:");
+	$p1 = utf8_decode("Conste por el presente documento, el Contrato de Suplencia que al amparo del Artículo 61º del D.S.-003-97-TR, Texto Único Ordenado del Decreto Legislativo No. 728, Ley de Productividad y Competitividad Laboral, celebran de una parte EMBOTELLADORA SAN MIGUEL DEL SUR S.A.C. (en adelante, 'EL EMPLEADOR'), con Registro Único de Contribuyentes No. 20413940568, con domicilio para estos efectos en la Calle Florida No. 204-206, distrito de Huaranguillo, Sachaca, provincia y departamento de Arequipa y sucursal en Panamericana Norte KM 154 - Distrito de Huaura, provincia de Huaura y Departamento de Lima, debidamente representado por , Señor Eber  Valdez Nolasco, identificado con DNI No. 15693253, según facultades inscritas en la Partida Electrónica N° 1308212 DEL Registro de Personas Jurídicas de Lima  y, de la otra parte; $registro->appa_trab $registro->apma_trab, $registro->nomb_trab; identificado con Documento de Identidad No. $registro->nume_dni con domicilio en $registro->dire_trab, Distrito de $registro->desc_dist, Provincia de $registro->desc_prov, Departamento de $registro->desc_depa; a quien en adelante se le denominará 'EL TRABAJADOR', en los términos y condiciones siguientes:");
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(10);
 
@@ -45,7 +45,7 @@
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("EL EMPLEADOR requiere cubrir temporalmente el puesto de $registro->desc_carg, en el departamento de producción en razón de que el titular de dicho puesto reemplazará puestos por vacaciones.");
+	$text = utf8_decode("EL EMPLEADOR requiere cubrir temporalmente el puesto de $registro->desc_carg, en el área de $registro->desc_area, en razón de que el titular de dicho puesto reemplazará puestos por vacaciones.");
 	$pdf->MultiCell(0,5,$text);
 	$pdf->Ln(7);
 
@@ -59,7 +59,7 @@
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("Por lo señalado en la cláusula precedente, EL EMPLEADOR contrata temporalmente los servicios personales del TRABAJADOR, para que se desempeñe como $registro->desc_carg.");
+	$text = utf8_decode("Por lo señalado en la cláusula precedente, EL EMPLEADOR contrata temporalmente los servicios personales del TRABAJADOR, para que se desempeñe como $registro->desc_carg en el área de $registro->desc_area");
 	$pdf->MultiCell(0,5,$text);
 	$pdf->Ln(3);
 	$pdf->MultiCell(0,5,utf8_decode("Queda entendido que la prestación de servicios deberá ser efectuada de manera personal, no pudiendo el TRABAJADOR ser reemplazado ni ayudado por tercera persona."));
@@ -75,8 +75,7 @@
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode(file_get_contents("../reporte/suplencia/cuarta.txt"));
-   	$text = ltrim($text, '?');
+	$text = utf8_decode("Las partes estipulan que la jornada laboral del trabajador será de 48 horas semanales flexibles y que los horarios de trabajo serán establecidos por la Empresa de acuerdo a sus necesidades, dentro de esta jornada. Asimismo, las partes acuerdan que la Empresa podrá introducir modificaciones al horario y jornada de trabajo, establecer jornadas acumulativas, alternativas y flexibles, compensatorias y horarios diferenciados, respetando la jornada máxima establecida  por ley, con $registro->ref_cont minutos de refrigerio que no es computable para efectos de la citada jornada, de acuerdo a lo dispuesto por la Ley de Productividad y Competitividad Laboral.");
 	$pdf->MultiCell(0,5,$text);
 	$pdf->Ln(25);
 
@@ -164,6 +163,7 @@
 
 	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,utf8_decode("DNI:	$registro->nume_dni"),'R');
+	$pdf->Ln(5);
 
 	$pdf->Output();
  	#cierra el buffer

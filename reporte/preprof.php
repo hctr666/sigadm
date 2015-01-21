@@ -224,7 +224,7 @@
 	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(70,7,utf8_decode("Área donde se realiza las Prácticas:"),0,0,'I',false);
 	$pdf->SetFont('Arial','',10);
-	$nom = utf8_decode("$reg2->mcap_prac");
+	$nom = utf8_decode("$registro->desc_area");
 	$pdf->Cell(0,7,$nom,0,0,'',false);
 	$pdf->Ln(28);
 

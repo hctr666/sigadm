@@ -10,6 +10,11 @@
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=1");
     }
 
+    function temporada(){
+        $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=temporada");
+        $("#area2").load(" ");        
+    }
+
     function trabajador()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&buscar=no&val=1");
@@ -26,6 +31,10 @@
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=area");
     }
 
+    function cartaSenati () {
+        $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=area");        
+    }
+
     function condiciones()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=condiciones");
@@ -37,7 +46,8 @@
 <div class="sub_menu"> 
     <ul>
         <li onclick="contratos()"><a href="#"  title="GESTION DE CONTRATOS">GESTION DE CONTRATOS</a></li>        
-        <li onclick="trabajador()"><a href="#"  title="GESTION DE PERSONAL">GESTION DE PERSONAL</a></li>              
+        <li onclick="trabajador()"><a href="#"  title="GESTION DE PERSONAL">GESTION DE PERSONAL</a></li>
+        <li onclick="cartaSenati()"><a href="#"  title="GESTION DE PERSONAL">Carta - Senati</a></li>
     </ul>
 </div> 
 <div class="menu_top_bg">REPORTES</div> 
@@ -47,11 +57,12 @@
         
     </ul>
 </div> 
-<div class="menu_top_bg">MANTENIMIENTO DE TABLAS </div> 
+<div class="menu_top_bg">MANTENIMIENTO</div> 
 <div class="sub_menu"> 
     <ul>
         <li onclick="cargos()"><a href="#" title="MANTENIMIENTO DE CARGOS">MANTENIMIENTO DE CARGOS</a></li>                         
         <!--<li onclick="areas()"><a href="#" title="MANTENIMIENTO DE AREAS">MANTENIMIENTO DE AREAS</a></li>-->
-        <li onclick="condiciones()"><a href="#" title="MANTENIMIENTO DE CONDICION LABORAL">MANTENIMIENTO DE CONDICION LABORAL</a></li>    
+        <li onclick="condiciones()"><a href="#" title="MANTENIMIENTO DE CONDICION LABORAL">MANTENIMIENTO DE CONDICION LABORAL</a></li>
+        <li onclick="temporada()"><a href="#" title="TEMPORADA DE VERANO">TEMPORADA DE VERANO</a></li>    
     </ul>
 </div> 

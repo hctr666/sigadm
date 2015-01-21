@@ -34,25 +34,61 @@ if (isset($_SESSION['codi_usua'])) {
             require_once '../modelo/TrabajadorDAO.php';
             require_once '../modelo/Trabajador.php';
             $agregando = true;
+
+            require_once '../modelo/DepartamentoDAO.php';
+            $departdao = new DepartamentoDAO();
+            $listaDepa = $departdao->listar($codi_empr);
+
+            require_once '../modelo/ProvinciaDAO.php';
+            require_once '../modelo/Provincia.php';
+            $provincia = new Provincia($codi_empr, '', '', '1');
+            $provinciaDAO = new ProvinciaDAO();
+            $listaProv = $provinciaDAO->listarPorDepa($provincia);
+
             require_once '../modelo/DistritoDAO.php';
+            require_once '../modelo/Distrito.php';
+            $distrito = new Distrito();
+            $distrito->codi_empr = $codi_empr;
+            $distrito->codi_prov = '1';
             $distritoDAO = new DistritoDAO();
-            $listaDistritos = $distritoDAO->listar($codi_empr);
+            $listaDist = $distritoDAO->listarPorProv($distrito);
+
             require_once '../trabajadorEditar.php';
             break;
 
         case 'editar':
             $buscar = $_GET['buscar'];
+            echo $buscar;
             $id = $_GET['id'];
             require_once '../modelo/TrabajadorDAO.php';
             require_once '../modelo/Trabajador.php';
             $agregando = false;
+
             $trabajadorDAO = new TrabajadorDAO();
             $registro = $trabajadorDAO->seleccionar($codi_empr, $id);
+
+            require_once '../modelo/DepartamentoDAO.php';
+            $departdao = new DepartamentoDAO();
+            $listaDepa = $departdao->listar($codi_empr);
+
+            require_once '../modelo/ProvinciaDAO.php';
+            require_once '../modelo/Provincia.php';
+            $provdao = new ProvinciaDAO();
+            $provincia = new Provincia($codi_empr, '', '', $registro->codi_depa);
+            $listaProv = $provdao->listarPorDepa($provincia);
+
             require_once '../modelo/DistritoDAO.php';
+            require_once '../modelo/Distrito.php';
             $distritoDAO = new DistritoDAO();
-            $listaDistritos = $distritoDAO->listar($codi_empr);
+            $distrito = new Distrito();
+
+            $distrito->codi_empr = $codi_empr;
+            $distrito->codi_prov = $registro->codi_prov;
+            
+            $listaDist = $distritoDAO->listarPorProv($distrito);
             require_once '../trabajadorEditar.php';
             break;
+
         case 'grabar_editar':
             require_once '../modelo/TrabajadorDAO.php';
             require_once '../modelo/Trabajador.php';
@@ -67,6 +103,9 @@ if (isset($_SESSION['codi_usua'])) {
             $trabajador->nume_dni = (string) $_GET['nume_dni'];
             $trabajador->dire_trab = $_GET['dire_trab'];
             $trabajador->codi_dist = $_GET['codi_dist'];
+            $trabajador->codi_prov = $_GET['codi_prov'];
+            $trabajador->codi_depa = $_GET['codi_depa'];
+
             $trabajador->codi_empr = $codi_empr;
             $year = substr($_GET['fech_naci'], 6, 4);
             $month = substr($_GET['fech_naci'], 3, 2);
@@ -96,6 +135,8 @@ if (isset($_SESSION['codi_usua'])) {
             $trabajador->nume_dni = (string) $_GET['nume_dni'];
             $trabajador->dire_trab = $_GET['dire_trab'];
             $trabajador->codi_dist = $_GET['codi_dist'];
+            $trabajador->codi_prov = $_GET['codi_prov'];
+            $trabajador->codi_depa = $_GET['codi_depa'];
             $trabajador->codi_empr = $codi_empr;
             $year = substr($_GET['fech_naci'], 6, 4);
             $month = substr($_GET['fech_naci'], 3, 2);

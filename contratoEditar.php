@@ -21,6 +21,18 @@
             <input type='button' name='buscarTrabajador' onclick='cargarBuscadorTrabajador()' value='...'/></td>
             </tr>
             <tr>
+                <td>Area:</td>
+                <td>
+                    <?php
+                    require_once('util/DataCombo.php');
+                    if ($agregando <> 1)
+                        DataCombo::mostrar('codi_area', $listaArea, 'codi_area', 'desc_area', $contrato->codi_area, '');
+                    else
+                        DataCombo::mostrar('codi_area', $listaArea, 'codi_area', 'desc_area', '', '');
+                    ?>
+                </td>
+            </tr>
+            <tr>
                 <td>Tipo:</td>
                 <td>
                     <?php
@@ -36,12 +48,13 @@
                 <td>Cargo:</td>
                 <td><div id=comboCargo>
                         <?php
-                        require_once('util/DataCombo.php');
-                        if ($agregando <> 1)
-                            DataCombo::mostrar('codi_carg', $listaCargo, 'codi_carg', 'desc_carg', $contrato->codi_carg, '');
-                        else
-                            DataCombo::mostrar('codi_carg', $listaCargo, 'codi_carg', 'desc_carg', '', '');
-                        ?></div>
+	                        require_once('util/DataCombo.php');
+	                        if ($agregando <> 1)
+	                            DataCombo::mostrar('codi_carg', $listaCargo, 'codi_carg', 'desc_carg', $contrato->codi_carg, '');
+	                        else
+	                            DataCombo::mostrar('codi_carg', $listaCargo, 'codi_carg', 'desc_carg', '', '');
+                        ?>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -209,6 +222,8 @@
                 $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);   
                 $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
             }
+        } else if(codi_tipo == 3 && document.getElementById("txttipoactual")){
+            alert("Naaaaaaaaa aaa");
         } else {
             cargarPracticanteData(agregando, id, idcontr);
         }
@@ -230,7 +245,7 @@
         bgdiv.css('background-color','#000');
         bgdiv.css('opacity','0.6');
         bgdiv.css('filter','alpha(opacity=60)');
-        
+
         $('body').append(bgdiv);
         
         var wscr = $(window).width();
@@ -238,7 +253,7 @@
                 
         $('#bgtransparent').css("width", wscr);
         $('#bgtransparent').css("height", hscr);
-               
+
         // ventana flotante
         var moddiv = $('<div>').attr({
             className: 'bgmodal',

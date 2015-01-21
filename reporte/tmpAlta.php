@@ -52,8 +52,24 @@
 	$pdf->Cell(0,0,"TERCERA: OBJETO DEL CONTRATO",'I');
 	$pdf->Ln(4);
 
+		#dividir fecha inicio temporada 'd-m-y'
+		$dit = substr($tmp_alta->ini_tmp, 8, 2);
+		$mit = substr($tmp_alta->ini_tmp, 5, 2);
+		$yit = substr($tmp_alta->ini_tmp, 0, 4);
+
+		#dividir fecha final temporada 'd-m-y'
+		$dft = substr($tmp_alta->fin_tmp, 8, 2);
+		$mft = substr($tmp_alta->fin_tmp, 5, 2);
+		$yft = substr($tmp_alta->fin_tmp, 0, 4);
+
+		#el nombre del mes 
+		require_once('../util/fechas.php');
+		$mes = new Fechas();
+		$mit = $mes::getMes($mit);
+		$mft = $mes::getMes($mft);
+
 	$pdf->SetFont('Arial','',10);
-	$text = utf8_decode("EL EMPLEADOR requiere incrementar temporalmente la producción a fin de atender el incremento de la demanda de bebidas gasificadas y no gasificadas que se origina regularmente todos los años en la Temporada de Verano, la cual el presente año empieza el 15 de diciembre del 2015  y culmina en abril de 2016.");
+	$text = utf8_decode("EL EMPLEADOR requiere incrementar temporalmente la producción a fin de atender el incremento de la demanda de bebidas gasificadas y no gasificadas que se origina regularmente todos los años en la Temporada de Verano, la cual el presente año empieza el $dit de $mit del $yit  y culmina en $mft de $yft.");
 	$pdf->MultiCell(0,5,$text);
 	$pdf->Ln(4);
 	

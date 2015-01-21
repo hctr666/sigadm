@@ -12,6 +12,9 @@ class Trabajador {
     public $fech_naci;
     public $dire_trab;
     public $codi_dist;
+    public $codi_prov;
+    public $codi_depa;
+    public $cesado;
 
     function __construct() {
         

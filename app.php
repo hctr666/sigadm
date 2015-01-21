@@ -7,14 +7,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="shortcut icon" href="/img/money.ico" />
-        <link rel="stylesheet" type="text/css" href="css/estilo.css">
-        </link>    
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+    	<link rel="stylesheet" type="text/css" href="css/table.css" />
+    
         <title>GESTOR VIRTUAL</title>
         
         <link href="css/jquery-ui.css"  rel="stylesheet"/>  
-        <link href="css/theme/jquery-ui-1.10.3.custom.css" rel="stylesheet"></link>
+        <link href="css/theme/jquery-ui-1.10.3.custom.css" rel="stylesheet"/>
         <script type="text/javascript" src="js/jquery-1.10.2.js" ></script>           
         <script type="text/javascript" src="js/jquery-ui.js"  ></script>         
+        <script type="text/javascript" src="js/util.js"></script>
+	    <!--<script type="text/javascript" src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
         <!--<script type="text/javascript"  src="js/Thread.js"></script>-->
         <style>
             body{
@@ -144,12 +147,25 @@
                 border-radius:4px;
                 background-color:#FFFFFF;
                 box-shadow: 0 2px 5px #666666;
+            }
 
+            div.bgtransparent{
+            	padding:30px;
             }
 
             .close {
                 position:relative;
                 left:480px;
+            }
+
+            .scrolldown{
+                width: 100px;
+                height: 400px;
+                /*position: fixed;*/
+                margin-left: 600px;
+                text-indent: -9999px;
+                background: url('img/down.png') no-repeat;
+                /*background-color: #000;*/
             }
         </style>
     </head>
@@ -161,80 +177,110 @@
                         <td><img src="img/imagen_cabecera.jpg"/></td>
                     </tr>
                     <tr>
-                        <td><div id="encabezado"  >
+                        <td>
+                        	<div id="encabezado"  >
                                 <div id="empresa" style="float:left;width:50%;color:#FFFFFF;padding-left: 30px;">RUC: <?php echo $_SESSION['nruc_empr']; ?> - <?php echo $_SESSION['desc_empr']; ?></div>
                                 <div style="float:left;width:50%;text-align: right; color:#FFFFFF; "><div></div></div>
-                            </div></td>
+                            </div>
+                        </td>
                     </tr>
-
                 </table>
             </div>
-
             <div id="cuerpo" style="height:100%">
-                <div id="menuh"  >              
-    <ul class="menu">
-
-        <li><a href="#"  onclick="menuhcontratos()">Inicio</a></li>        
-        <li><a href="#">Usuario:                               
-                <?php echo $_SESSION['nomb_usua']; ?></a>
-            <ul>
-                <li ><a href="#" onClick="cambiarClave()" >Cambiar Clave</a></li>
-
-            </ul>
-        </li>
-        <li><a href="#" onclick="salir()">Cerrar</a></li>
-    </ul>
+                <div id="menuh">              
+			        <ul class="menu">
+				        <li><a href="#"  onclick="menuhcontratos()">Inicio</a></li>        
+				        <li><a href="#">Usuario:                               
+	                		<?php echo $_SESSION['nomb_usua']; ?></a>
+		            		<ul>
+		                		<li ><a href="#" onClick="cambiarClave()" >Cambiar Clave</a></li>
+		            		</ul>
+        				</li>
+        				<li><a href="#" onclick="salir()">Cerrar</a></li>
+    				</ul>
 </div>
-<div id="menuv" class="main_cont" style="float:left;width:25%" >   
+<div id="menuv" class="main_cont" style="float:left;width:20%" >   
     <?php require_once('menuOpciones.php'); ?>       
 </div>
-<div id ="detalle"style="float:left;width:75%; ">
-    <div id="cargando" ></div>
-
-    <div id="areaTrabajo" style="padding: 20px;">
-        <h1 align="center">BIENVENIDOS A LA PLATAFORMA VIRTUAL<br>
-            DEL SISTEMA DE GESTION ADMINISTRATIVA
-            <br/><br/><br/><img  src="img/logo00000001.jpg" width="680" height="260"></h1>
-        <!-- <a href="#" id="open">click aqui</a>-->
+<center>
+    <div id ="detalle"style="margin-left:35px;float:left;width:75%;">
+        <div id="cargando" ></div>
+        <!--<div><a href="#" class="scrolldown"></a></div>-->
+            <div id="areaTrabajo" style="padding: 20px;">
+            <h1 align="center">BIENVENIDOS A LA PLATAFORMA VIRTUAL<br>
+                DEL SISTEMA DE GESTION ADMINISTRATIVA
+                <br/><br/><br/><img  src="img/logo00000001.jpg" width="680" height="260"></h1>
+            <!-- <a href="#" id="open">click aqui</a>-->
+        </div>
+        <br>
+        <div id="area2" style="padding:0px; padding-top:0px; padding-right:0px;">
+            
+        </div>
     </div>
-    <br>
-    <div id="area2" style="padding:25px; padding-top:0px;">
-        
-    </div>
-</div>    
-        <script>
-            function cambiarClave() {
-
-            }
-            function enContrucción() {
-                alert("Disculpe, esta opcion esta en contrucción")
-            }
-            function noValida() {
-            }
-            function mostrarCargando() {
-                document.getElementById("cargando").innerHTML = "<center><img src='img/loading.gif' /> Cargando...</center>";
-            }
-            function ocultarCargando() {
-                document.getElementById("cargando").innerHTML = "";
-            }
-            function inicio() {
-
-            }
-            function menuOpciones() {
-                $("#menuv").load("../menuOpciones.php");
-                inicio();
-            }
-            function menuReportes() {
-                /*$("#menuv").load("../menuReportes.php");
-                inicio();*/
-                enContrucción();
-            }
-            function  iniciarSesion()
-            {
-                window.location = "/PrincipalAction.do?method=salir";
-            }
-           
+</center>   
+<script>
     
+    function enContrucción() {
+        alert("Disculpe, esta opcion esta en contrucción")
+    }
+    
+    function noValida() {
+    }
+    
+    function mostrarCargando() {
+        document.getElementById("cargando").innerHTML = "<center><img src='img/loading.gif' /> Cargando...</center>";
+    }
+    
+    function ocultarCargando() {
+        document.getElementById("cargando").innerHTML = "";
+    }
+    
+    function inicio() {
+
+    }
+    
+    function menuOpciones() {
+        $("#menuv").load("../menuOpciones.php");
+        inicio();
+    }
+    
+    function menuReportes() {
+        /*$("#menuv").load("../menuReportes.php");
+        inicio();*/
+        enContrucción();
+    }
+    
+    function  iniciarSesion()
+    {
+        window.location = "/PrincipalAction.do?method=salir";
+    }
+           
+    function subir(){
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+            return false;
+    }
+
+    /*script para hacer auto scroll hacia abajo
+    $(document).ready(function () {
+
+        $(window).scroll(function () {
+            if ($(this).scroll() < 100) {
+                $('.scrolldown').fadeIn();
+            } else {
+                $('.scrolldown').fade();
+            }
+        });
+
+    });*/
+
+    $('.scrolldown').click(function () {
+        $('html, body').animate({
+            scrollTop: $(document).height()
+        }, 'slow');
+        return false;
+    });
    
     function salir(){        
         //$("#cuerpo").load("controller/principalController.php?accion=salir");    
