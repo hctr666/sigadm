@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<div style="float:right;"><input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/></div>
 <center>
     <!--<font color="#1d537f"><h1>Gestión de Contratos</h1></font>-->
     <?php 
@@ -81,7 +82,7 @@
             }
             ?>
             <br/>    
-            <input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Agregar Contrato'/>
+            <input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/>
             <input type='button' name='btnBuscar' onclick='buscarContrato()' value='Nueva Busqueda'/>
         </form>
     </div>
