@@ -97,7 +97,6 @@
         creaModal(400,200);
         criterio = document.frmBuscar.criterioBuscar.value;
         $("#bgmodal").load("controller/contratoController.php?accion=seleccionadorCese&codi_contr="+codi_contr+"&codi_trab="+codi_trab);
-
     }
 
     function i(id) {

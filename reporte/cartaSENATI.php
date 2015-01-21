@@ -54,7 +54,7 @@
 	
 	#contenido
 	$pdf->SetFont('Arial', '', 10);
-	$p1 = utf8_decode("Mediante el presente me dirijo a ustedes para saludarlos cordialmente y manifestar que, de acuerdo a los lineamientos del SENATI, estamos presentando al Señor $registro->nomb_trab $registro->appa_trab $registro->apma_trab, quien se encuentra cursando la especialidad de $registro->desc_carg.");
+	$p1 = utf8_decode("Mediante el presente me dirijo a ustedes para saludarlos cordialmente y manifestar que, de acuerdo a los lineamientos del SENATI, estamos presentando al Señor $txtnom $txtapel, quien se encuentra cursando la especialidad de $txtesp.");
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(7);
 	$p2 = utf8_decode("Al respecto debo indicar que, la Empresa Embotelladora San Miguel del Sur SAC, con RUC 20413940568 quien; en virtud de los lineamientos como aportante al SENATI, es el Patrocinador del estudiante.");

@@ -304,9 +304,6 @@ if (isset($_SESSION['codi_usua'])) {
                 case '06':
                     require_once("../reporte/art57.php");
                     break;
-                case '07':
-                    require_once("../reporte/cartaSENATI.php");
-                    break;
 
                 case '08':
                     require_once("../reporte/art57sin.php");
@@ -531,7 +528,15 @@ if (isset($_SESSION['codi_usua'])) {
 					require_once '../EditarContratoIndt.php';
 					break;
             }
-    	break;      
+    	break; 
+
+        case 'imprimirCartaSenati':
+             $txtnom = $_GET['nom'];
+             $txtapel = $_GET['apel'];
+             $txtesp = $_GET['esp'];
+
+             require_once("../reporte/cartaSENATI.php");
+             break;     
     }
 
 } else {

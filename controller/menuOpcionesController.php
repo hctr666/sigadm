@@ -11,6 +11,7 @@ switch ($accion) {
         $listaCondicion = $condicionDAO->listar($codi_empr);
         require_once('../condicionLista.php');
         break;
+
     case 'area':
         require_once('../modelo/AreaDAO.php');
         $areaDAO = new AreaDAO();
@@ -35,8 +36,6 @@ switch ($accion) {
     	} else {
     		DataCombo::mostrar('codi_prov', $listaProv, 'codi_prov', 'desc_prov', '', 'actualizaDist()');
     	} 
-
-
     	break;
 
 	case 'comboDist':
@@ -98,6 +97,7 @@ switch ($accion) {
         $listaCargo = $cargoDAO->listar($cargo);
         require_once('../cargoLista.php');
         break;
+        
     case 'trabajador':
         if (isset($_GET['val'])) {
             $val = $_GET['val'];
@@ -124,10 +124,10 @@ switch ($accion) {
         break;
 
     case 'temporada':
-        require_once '../modelo/contratoDAO.php';
+        require_once '../modelo/ContratoDAO.php';
         $contratoDAO = new contratoDAO();
-        $año_act = substr(date("Y-m-d"), 0,4);
-        $regFecha = $contratoDAO->cargarFechaTmpAlta($año_act);
+        $anio_act = substr(date("Y-m-d"), 0,4);
+        $regFecha = $contratoDAO->cargarFechaTmpAlta($anio_act);
         require_once('../asignaTmpAlta.php');
         break;
 }

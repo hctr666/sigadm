@@ -21,31 +21,25 @@
 			break;
 
 		case 'guardar_fecha':
-			require_once '../modelo/ContratoDAO.php';
 			$year = $_GET['year'];
+			require_once '../modelo/ContratoDAO.php';
 			$contratoDAO = new ContratoDAO();
 
-			$yearIni = substr($_GET['fech_inic'], 6, 4);
-            $monthIni = substr($_GET['fech_inic'], 3, 2);
-            $dayIni = substr($_GET['fech_inic'], 0, 2);
-            $fech_inic = $yearIni . '-' . $monthIni . '-' . $dayIni;
-            echo $fech_inic;
+            $fech_inic = $_GET['fech_inic'];
+            #echo $fech_inic;
+            $fech_fin = $_GET['fech_fin'];            
+			#echo $fech_fin;
 
-			$yearfin = substr($_GET['fech_fin'], 6, 4);
-            $monthfin = substr($_GET['fech_fin'], 3, 2);
-            $dayfin = substr($_GET['fech_fin'], 0, 2);
-            $fech_fin = $yearfin . '-' . $monthfin . '-' . $dayfin;            
-			echo $fech_fin;
-
-			$contratoDAO->guardarFechTmp($year, $fech_inic, $fech_fin);
+			#$contratoDAO->guardarFechTmp($year, $fech_inic, $fech_fin);
 			
-			/*if ($contratoDAO->guardarFechTmp($year, $fech_inic, $fech_fin) == 1) {
-				echo "<script>alert('Guardó :)');</script>";
+			if ($contratoDAO->guardarFechTmp($year, $fech_inic, $fech_fin) == 1) {
+				echo "<script>";
+				echo "alert('Las fechas se guardaron correctamente \\n \\n Temporada: $year \\n Fecha inicial: $fech_inic \\n Fecha final: $fech_fin');";
+				echo "</script>";
 			} else {
-				echo "<script>alert('NO Guardó :(');</script>";
-			}*/
-
-			require_once '../asignaTmpAlta.php';
+				echo "<script>alert('la fecha NO se guardó :(');</script>";
+			}
+			echo "<script>window.location.reload();</script>";
 			break;
 	}
  ?>
@@ -53,6 +47,7 @@
  <script type="text/javascript">
  	$(function() {
         $("#fech_inic").datepicker({
+            dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true
         });
@@ -60,6 +55,7 @@
 
     $(function() {
         $("#fech_fin").datepicker({
+            dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true
         });
