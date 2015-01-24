@@ -1,0 +1,1 @@
+[17-Jan-2015 12:05:04 UTC] PHP Fatal error:  Call to undefined function utf_decode() in /home/chingacarlos/public_html/ism/trabajadorListado.php on line 36
