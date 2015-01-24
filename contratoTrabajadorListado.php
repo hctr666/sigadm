@@ -1,10 +1,18 @@
 <center>
+<<<<<<< HEAD
 <font color="#1d537f"><h1>GestiÂ¨Â®n de Contratos</h1></font>
+=======
+<font color="#1d537f"><h1>Gesti¨®n de Contratos</h1></font>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     <h3>Listado de Trabajadores que empiecen con '<?=$criterioBuscar?>'</h3>
     <form name=frmBuscar>
     
     <table border="1">
+<<<<<<< HEAD
         <tr><th>Codigo</th><th>Ap. Paterno</th><th>Ap. Materno</th><th>Nombre</th><th>DNI</th><th>DirecciÂ¨Â®n</th><th>Distrito</th><th>F/Naci.</th>
+=======
+        <tr><th>Codigo</th><th>Ap. Paterno</th><th>Ap. Materno</th><th>Nombre</th><th>DNI</th><th>Direcci¨®n</th><th>Distrito</th><th>F/Naci.</th>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             <th>Seleccionar</th></tr>
         <?php
         if(count($listaTrabajador)>0){
@@ -32,7 +40,11 @@
     
     <?php
         if(count($listaTrabajador)==0){
+<<<<<<< HEAD
             echo "<font color='red'>ÂNo existen elementos con ese criterio!</font>";
+=======
+            echo "<font color='red'>No existen elementos con ese criterio!</font>";
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         }
     ?>
     <br/>    
@@ -60,7 +72,11 @@
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=nuevo&criterioBuscar="+criterioBuscar);
     }
     function eliminar(){
+<<<<<<< HEAD
          alert('Usted no puede utilizar esta opciÂ¨Â®n');
+=======
+         alert('Usted no puede utilizar esta opci¨®n');
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }  
     function buscar()
     {

@@ -1,4 +1,5 @@
  <center>
+<<<<<<< HEAD
  	<div>
  	<h2>Establecer Fecha de Temporada de verano</h2>
 	<br/> 		
@@ -52,6 +53,59 @@
 <script src="js/DatePicker.js"></script>
 
  <script type="text/javascript">
+=======
+ 	<h2>Establecer Fecha de Temporada de verano</h2>
+	<br/> 		
+	<form name="frmTmp">
+		<table>
+			<tr>
+				<td>Año:</td>
+				<td>
+					<select id="cmbYear" name="cmbYear">
+						<?php 
+                            echo "<option>seleccionar</option>";
+    							for ($i=2013; $i < 2060; $i++) { 
+    								echo "<option>$i</option>";
+    							}
+						 ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Fecha inicial:</td>
+				<td><div id="f_inic"><input type="text" id="fech_inic" maxlength="10" name="fech_inic"/></div></td>
+			</tr>
+			<tr>
+				<td>Fecha final:</td>
+				<td><div id="f_fin"><input type="text" id="fech_fin" maxlength="10" name="fech_fin"/></div></td>
+			</tr>
+		</table>
+		<br/>
+		<table>
+			<tr><td><input type="button" value="Guardar" id="btnsave" onclick="validar()"></td></tr>
+		</table>
+		<br/>
+		<br/>
+		<table class="ismtable">
+			<thead>
+				<th>Año actual</th>
+				<th>Fecha inicial</th>
+				<th>Fecha final</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td><?php echo $regFecha->year_tmp ?></td>
+					<td><?php echo $regFecha->ini_tmp ?></td>
+					<td><?php echo $regFecha->fin_tmp ?></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+ </center>
+<script src="js/DatePicker.js"></script>
+
+<script>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
  	$(function() {
         $("#fech_inic").datepicker({
@@ -105,4 +159,8 @@
 
     }
 
+<<<<<<< HEAD
  </script>
+=======
+</script>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2

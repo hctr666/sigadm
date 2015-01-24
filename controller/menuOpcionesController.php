@@ -125,9 +125,14 @@ switch ($accion) {
 
     case 'temporada':
         require_once '../modelo/ContratoDAO.php';
+<<<<<<< HEAD
         $contratoDAO = new ContratoDAO();
         $anio_act = substr(date("Y-m-d"), 0,4);
         #echo "<script>alert($anio_act);</script>";
+=======
+        $contratoDAO = new contratoDAO();
+        $anio_act = substr(date("Y-m-d"), 0,4);
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         $regFecha = $contratoDAO->cargarFechaTmpAlta($anio_act);
         require_once('../asignaTmpAlta.php');
         break;

@@ -41,12 +41,18 @@
 	$pdf->Cell(0,5,utf8_decode($registro->nomb_trab." ".$registro->appa_trab." ".$registro->apma_trab),0 ,0 ,"I", false);
 	$pdf->Ln(12);
 
+<<<<<<< HEAD
 	$pdf->SetFont('Arial','B',12);
 	if (isset($fechRen)) {
 		$title = 'Referencia: RENUNCIA VOLUNTARIA';
 	} else {
 		$title = 'Referencia: TERMINO DE CONTRATO';
 	}
+=======
+	#Nombre del año
+	$pdf->SetFont('Arial','B',12);
+	$title = 'Referencia: TERMINO DE CONTRATO';
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 	$w = $pdf->GetStringWidth($title)+6;
 
 	$pdf->SetX((150-$w)/2);
@@ -57,6 +63,7 @@
 	$pdf->Cell(0,5,utf8_decode("De  nuestra consideración:"),0 ,0 ,"I", false);
 	$pdf->Ln(14);
 	
+<<<<<<< HEAD
 		#dividir fecha final del contrato
 		if (isset($fechRen)) {
 			#dd-mm-yyyy
@@ -68,6 +75,11 @@
 			$fech_fin = $registro->fech_fin;
 		}
 		
+=======
+	#contenido
+		#dividir fecha final del contrato
+		$fech_fin = $registro->fech_fin;
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 		$dfin = substr($fech_fin, 8, 2);
 		$mesfin = substr($fech_fin, 5, 2);
 		$añofin = substr($fech_fin, 0, 4);
@@ -77,11 +89,19 @@
 		$mesfin = $mes::getMes($mesfin);
 
 	$pdf->SetFont('Arial', '', 10);
+<<<<<<< HEAD
 	$p1 = utf8_decode("									Por la presente cumplimos con comunicarle  que la relación laboral con la empresa se extingue el $dfin de $mesfin del $añofin por lo que deberá acercarse a la oficina de Recursos Humanos en horario de oficina hasta en un plazo máximo de 48 horas siguientes a su cese, para que haga entrega de los bienes de propiedad de la empresa y que le fueron entregados (uniforme, epp, etc..); así como para cobrar su liquidación de Beneficios Sociales, y hacerle entrega de su certificado de trabajo y carta liberatoria de CTS.");
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(7);
 
 	$p2 = utf8_decode("									A efectos de cumplir con lo dispuesto en la Ley N°29783 sobre Seguridad y Salud en el Trabajo se le informa que de acuerdo al Protocolos de Exámenes Médico Ocupacionales RM 312-2011 dice sobre la  Evaluación Médico Ocupacional de Retiro o de Egreso: Evaluación médica realizada al trabajador respecto de su estado y condición de salud días previos al cese laboral, tendrán validez los exámenes ocupacionales realizados con una antigüedad no mayor de 2 meses.
+=======
+	$p1 = utf8_decode("									Por la presente cumplimos con comunicarle  que la relación laboral con la empresa se extingue el $dfin de $mesfin  del $añofin  por  lo que deberá acercarse a la oficina de Recursos Humanos en horario de oficina hasta en un plazo máximo de 48 horas siguientes a su cese, para que haga entrega de los bienes de propiedad de la empresa que le fueron entregados (uniforme, epp, etc..); así como para hacerle entrega de su certificado.");
+	$pdf->MultiCell(0,5,$p1);
+	$pdf->Ln(7);
+
+	$p2 = utf8_decode("									Así mismo, cumplimos con informarle que culminando la relación laboral con nuestra representada, y a efectos de cumplir con lo dispuesto por el Artículo 49 de la Ley N°29783; es obligatorio que se le efectué el correspondiente examen médico acorde a las labores desempeñadas por su persona en su récord histórico en la organización, dándole énfasis a los riesgos a los que estuvo expuesto a lo largo de desempeño laboral. Estos exámenes médicos deberán ser realizados respetando lo dispuesto en los Documentos Técnicos de la Vigilancia de la Salud de los Trabajadores expedidos por el Ministerio de Salud, o por el organismo competente, según corresponda.
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 ");
 	$pdf->MultiCell(0,5,$p2);
 	$pdf->Ln(7);
@@ -96,7 +116,11 @@
 		$mes = new Fechas();
 		$me = $mes::getMes($me);	
 
+<<<<<<< HEAD
 	$p3 = utf8_decode("									Por lo expuesto y encontrándonos dentro del plazo determinado por la Ley, el EMO realizado el $de de $me del $ae, teniendo como resultado APTO - Examen Médico.");
+=======
+	$p3 = utf8_decode("									En ese sentido, le solicitamos gentilmente se apersone a la Clínica Ramazinni sito en Prolongación San Martin 156 Huacho, el $de de $me del $ae de 08:00 am a 11:00 am.  La no asistencia a la presente citación es de entera responsabilidad de su persona.");
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 	$pdf->MultiCell(0,5,$p3);
 	$pdf->Ln(20);	
 

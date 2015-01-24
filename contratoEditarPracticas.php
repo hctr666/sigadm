@@ -3,7 +3,11 @@
         <?php 
             if ($agr <> 0) {
                 echo "EDITAR CONTRATO";
+<<<<<<< HEAD
                 #echo $indt_cont;
+=======
+                echo $indt_cont;
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             } else {
                 echo "AGREGAR CONTRATO";
             }
@@ -143,6 +147,10 @@
                            }
                     ?>" />
                 </td>
+<<<<<<< HEAD
+=======
+                <td>min.<td/>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             </tr>
             <tr>
                 <td>Monto</td>

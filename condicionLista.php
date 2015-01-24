@@ -4,8 +4,13 @@
         <table class="ismtable">
         	<thead>
 	            <tr>
+<<<<<<< HEAD
 	            	<th>C®Ædigo</th>
 	            	<th>Descripci®Æn</th>
+=======
+	            	<th>C√≥digo</th>
+	            	<th>Descripci√≥n</th>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 	            	<th>Editar</th>
 	            </tr>
         	</thead>

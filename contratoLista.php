@@ -25,6 +25,10 @@
             $("#area2").load("controller/contratoController.php?accion=mostrarContratos&criterioBuscar="+criterioBuscar);
         }
         else
+<<<<<<< HEAD
             alert('Debe de ingresar m��nimamente un caracter');
+=======
+            alert('Debe de ingresar mínimamente un caracter');
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }
 </script>

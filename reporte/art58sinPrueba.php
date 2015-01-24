@@ -28,7 +28,11 @@
 	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
+<<<<<<< HEAD
 	$p1 = utf8_decode("El(la) Señor(a) $registro->appa_trab $registro->apma_trab $registro->nomb_trab (en adelante, 'EL TRABAJADOR'), peruano, identificado con Documento Nacional de Identidad No. 46543403, con domicilio $registro->dire_trab- Distrito de $registro->desc_dist, Provincia de $registro->desc_prov y Departamento de $registro->desc_depa;");
+=======
+	$p1 = utf8_decode("El(la) Señor(a) $registro->appa_trab $registro->apma_trab $registro->nomb_trab (en adelante, 'EL TRABAJADOR'), peruano, identificado con Documento Nacional de Identidad No. 46543403, con domicilio Av. Salaverry Nº 301 - Distrito de $registro->desc_dist, Provincia de $registro->desc_prov y Departamento de $registro->desc_depa;");
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(10);
 
@@ -290,6 +294,7 @@ EL EMPLEADOR Y/O SOBRE LOS QUE ÉSTE TENGA DERECHOS BAJO CUALQUIER TÍTULO
 	$pdf->MultiCell(0,5, $l3);
 	$pdf->Ln(28);
 
+<<<<<<< HEAD
 
 	#firma del trabajador	
 	$line = '________________________________________';
@@ -323,11 +328,28 @@ EL EMPLEADOR Y/O SOBRE LOS QUE ÉSTE TENGA DERECHOS BAJO CUALQUIER TÍTULO
 
 	/*$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,,'R');
+=======
+	#firma del trabajador
+	$pdf->SetFont('Arial','',9);
+	$pdf->Cell(0,0,'________________________________________','R');
+	$pdf->Ln(6);
+
+	$pdf->SetFont('Arial','',9);
+	$pdf->Cell(0,0,utf8_decode("Nombres:	$registro->appa_trab $registro->apma_trab, $registro->nomb_trab"),'R');
+	$pdf->Ln(6);	
+
+	$pdf->SetFont('Arial','',9);
+	$pdf->Cell(0,0,utf8_decode("DNI:	$registro->nume_dni"),'R');
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',9);
 	$pdf->Cell(0,0,'Trabajador','R');
+<<<<<<< HEAD
 	$pdf->Ln(6);	*/
+=======
+	$pdf->Ln(6);	
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
 	$pdf->Output();
 	ob_end_flush();
@@ -335,4 +357,8 @@ EL EMPLEADOR Y/O SOBRE LOS QUE ÉSTE TENGA DERECHOS BAJO CUALQUIER TÍTULO
 	$titulos = null;
 	$textos = null;
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2

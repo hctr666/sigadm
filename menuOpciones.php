@@ -12,8 +12,12 @@
 
     function temporada(){
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=temporada");
+<<<<<<< HEAD
         $("#area2").load(" ");   
         //alert("temporada de conejos");     
+=======
+        $("#area2").load(" ");        
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }
 
     function trabajador()

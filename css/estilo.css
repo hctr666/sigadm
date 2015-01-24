@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             .bordeTitulo{
                 border-top: 1px solid #ff9999;
                 border-right: 2px solid #ff9999;   
@@ -128,6 +132,7 @@
             .close {
                 position:relative;
                 left:480px;
+<<<<<<< HEAD
             }
             
            /* div.detalle{
@@ -137,3 +142,6 @@
                	width:78%;
             	border:1px solid;
             }*/
+=======
+            }
+>>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
