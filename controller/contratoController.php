@@ -138,17 +138,10 @@ if (isset($_SESSION['codi_usua'])) {
             $contrato->fech_inic = $yearIni . '-' . $monthIni . '-' . $dayIni;
 
             if ($contrato->indt_cont == '1') {
-<<<<<<< HEAD
                 $yearFin = substr($_GET['fech_fin'], 6, 4);
                 $monthFin = substr($_GET['fech_fin'], 3, 2);
                 $dayFin = substr($_GET['fech_fin'], 0, 2);
                 $contrato->fech_fin = $yearFin . '-' . $monthFin . '-' . $dayFin;
-=======
-            	$yearFin = substr($_GET['fech_fin'], 6, 4);
-            	$monthFin = substr($_GET['fech_fin'], 3, 2);
-            	$dayFin = substr($_GET['fech_fin'], 0, 2);
-            	$contrato->fech_fin = $yearFin . '-' . $monthFin . '-' . $dayFin;
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             }
 
             #grabar la data del contrato
@@ -160,7 +153,6 @@ if (isset($_SESSION['codi_usua'])) {
                 $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
                 echo "<script>alert('Contrato editado correctamente :)');</script>";
             } else {
-<<<<<<< HEAD
                 echo "<script>alert('No se editó el contrato :/');</script>";
             }
 
@@ -194,41 +186,6 @@ if (isset($_SESSION['codi_usua'])) {
                     echo "<script>alert('No se editó nada :(');</script>";
                 }
             }
-=======
-            	echo "<script>alert('No se edit贸 el contrato :/');</script>";
-            }
-
-            #si el contrato es por convenio de pr谩cticas pre prof. o profesionales
-			if ($contrato->codi_cond == '09' || $contrato->codi_cond == '10' && $contrato->indt_cont == '1') {
-				require_once '../modelo/DetallePracticante.php';    
-	            require_once '../modelo/DetallePracticanteDAO.php'; 
-	            $detallePrac = new DetallePracticante();
-	            $detallePrac->codi_empr = $codi_empr;
-	            $detallePrac->codi_trab = $_GET['codi_trab'];
-	            $detallePrac->codi_cfp = $_GET['codi_cfp'];
-	            $detallePrac->fpres_prac = $_GET['fpres_prac'];
-				$detallePrac->situ_prac = $_GET['situ_prac'];            
-	            $detallePrac->facu_prac = $_GET['facu_prac'];
-	            $detallePrac->mcap_prac = $_GET['mcap_prac'];
-	            $detallePrac->esp_prac = $_GET['esp_prac'];
-	            $detallePrac->codi_contr = $_GET['codi_contr'];
-
-	            $fpresi_a帽o = substr($_GET['fpres_prac'], 6, 4);
-	            $fpresi_mes = substr($_GET['fpres_prac'], 3, 2);
-	            $fpresi_dia = substr($_GET['fpres_prac'], 0, 2);
-	            $detallePrac->fpres_prac = $fpresi_a帽o . '-' . $fpresi_mes . '-' . $fpresi_dia;
-
-	            $detallePracdao = new DetallePracticanteDAO();
-	            #grabar la data del practicante
-                if ($detallePracdao->editarPracticante($detallePrac) == 1) {
-                    #echo "<script>alert('Se edit贸 el practicante');</script>";
-                    $criterioBuscar = substr($_GET['nombre'], 0, 1);
-                    #$listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
-                } else {
-                    echo "<script>alert('No se edit贸 nada :(');</script>";
-                }
-			}
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             
             $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
             require_once '../contratos.php';
@@ -251,17 +208,12 @@ if (isset($_SESSION['codi_usua'])) {
             $contrato->codi_area = $_GET['codi_area'];
             $contrato->ref_cont = $_GET['ref_cont'];
 
-<<<<<<< HEAD
             $yearIni = substr($_GET['fech_inic'], 6, 4);
-=======
-			$yearIni = substr($_GET['fech_inic'], 6, 4);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $monthIni = substr($_GET['fech_inic'], 3, 2);
             $dayIni = substr($_GET['fech_inic'], 0, 2);
             $contrato->fech_inic = $yearIni . '-' . $monthIni . '-' . $dayIni;
 
             if ($contrato->indt_cont == 1) {
-<<<<<<< HEAD
                 $yearFin = substr($_GET['fech_fin'], 6, 4);
                 $monthFin = substr($_GET['fech_fin'], 3, 2);
                 $dayFin = substr($_GET['fech_fin'], 0, 2);
@@ -269,22 +221,12 @@ if (isset($_SESSION['codi_usua'])) {
             }
 
             #grabar la data del contrato
-=======
-            	$yearFin = substr($_GET['fech_fin'], 6, 4);
-	            $monthFin = substr($_GET['fech_fin'], 3, 2);
-	            $dayFin = substr($_GET['fech_fin'], 0, 2);
-	            $contrato->fech_fin = $yearFin . '-' . $monthFin . '-' . $dayFin;
-            }
-
- 			#grabar la data del contrato
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $contratoDAO = new ContratoDAO();
 
             if ($contratoDAO->agregar($contrato) == 1) {
                 $criterioBuscar = substr($_GET['nombre'], 0, 1);
                 echo "<script>alert('Contrato agregado correctamente :)');</script>";
             } else {
-<<<<<<< HEAD
                 echo "<script>alert('No se agregó el cotrato :(');</script>";               
             }
 
@@ -317,40 +259,6 @@ if (isset($_SESSION['codi_usua'])) {
                     echo "<script>alert('No se agregó nada :(');</script>";
                 }
             }
-=======
-                echo "<script>alert('No se agreg贸 el cotrato :(');</script>";            	
-            }
-
-            #si el contrato es por convenio de pr谩cticas pre prof. y profesionales
-			if ($contrato->codi_cond == '09' || $contrato->codi_cond == '10') {
-				require_once '../modelo/DetallePracticante.php';    
-	            require_once '../modelo/DetallePracticanteDAO.php'; 
-	            $detallePrac = new DetallePracticante();
-	            $detallePrac->codi_empr = $codi_empr;
-	            $detallePrac->codi_trab = $_GET['codi_trab'];
-	            $detallePrac->codi_cfp = $_GET['codi_cfp'];
-	            $detallePrac->fpres_prac = $_GET['fpres_prac'];
-				$detallePrac->situ_prac = $_GET['situ_prac'];            
-	            $detallePrac->facu_prac = $_GET['facu_prac'];
-	            $detallePrac->mcap_prac = $_GET['mcap_prac'];
-	            $detallePrac->esp_prac = $_GET['esp_prac'];
-
-	            $fpresi_a帽o = substr($_GET['fpres_prac'], 6, 4);
-	            $fpresi_mes = substr($_GET['fpres_prac'], 3, 2);
-	            $fpresi_dia = substr($_GET['fpres_prac'], 0, 2);
-	            $detallePrac->fpres_prac = $fpresi_a帽o . '-' . $fpresi_mes . '-' . $fpresi_dia;
-
-	            $detallePracdao = new DetallePracticanteDAO();
-	            #grabar la data del practicante
-                if ($detallePracdao->agregarPracticante($detallePrac) == 1) {
-                    echo "<script>alert('se agreg贸 el practicante');</script>";
-                    $criterioBuscar = substr($_GET['nombre'], 0, 1);
-                    #$listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
-                } else {
-                    echo "<script>alert('No se agreg贸 nada :(');</script>";
-                }
-			}
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
             require_once '../contratos.php';
             break;
@@ -384,19 +292,11 @@ if (isset($_SESSION['codi_usua'])) {
                     break;
 
                 case '05':
-<<<<<<< HEAD
                     $año_tmp = substr($registro->fech_inic, 0,4);
                     #$añoactual = substr(date("Y-m-d"), 0,4);
                     #echo "<script>alert($año_tmp)</script>";
                     $tmp_alta = $contratoDAO->cargarFechaTmpAlta($año_tmp);
                     #echo "<script>alert($tmp_alta->fin_tmp)</script>";
-=======
-                    $a帽o_tmp = substr($registro->fech_inic, 0,4);
-            		#$a帽oactual = substr(date("Y-m-d"), 0,4);
-        		    #echo "<script>alert($a帽o_tmp)</script>";
-		            $tmp_alta = $contratoDAO->cargarFechaTmpAlta($a帽o_tmp);
-		            #echo "<script>alert($tmp_alta->fin_tmp)</script>";
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
                     require_once("../reporte/tmpAlta.php");
                     break;
@@ -410,42 +310,27 @@ if (isset($_SESSION['codi_usua'])) {
                     break;
 
                 case '09':
-<<<<<<< HEAD
                     $reg2 = $contratoDAO->seleccionarDetaPrac($codi_empr, $id, $idtrab);
-=======
-       	            $reg2 = $contratoDAO->seleccionarDetaPrac($codi_empr, $id, $idtrab);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                     require_once("../reporte/preprof.php");
                     break;
 
                 case '10':
-<<<<<<< HEAD
                     $reg2 = $contratoDAO->seleccionarDetaPrac($codi_empr, $id, $idtrab);
-=======
-                	$reg2 = $contratoDAO->seleccionarDetaPrac($codi_empr, $id, $idtrab);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                     require_once("../reporte/prof.php");
                     break;      
             }
 
         case 'cesarContrato':
-<<<<<<< HEAD
             $codi_contr = $_GET['codi_contr'];
-=======
-        	$codi_contr = $_GET['codi_contr'];
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $codi_trab = $_GET['codi_trab'];
             $codi_empr = $_SESSION['codi_empr'];
             $fech_emo = $_GET['fechEmo'];
             $emo = $_GET['emo'];
 
-<<<<<<< HEAD
             if (isset($_GET['fechRen'])) {
                 $fechRen = $_GET['fechRen'];
             }
 
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             require_once '../modelo/ContratoDAO.php';
             require_once '../modelo/Contrato.php';
 
@@ -455,21 +340,14 @@ if (isset($_SESSION['codi_usua'])) {
             $contrato->codi_contr = $codi_contr;
 
             $yearemo = substr($fech_emo, 6, 4);
-<<<<<<< HEAD
             $monthemo = substr($fech_emo, 3, 2);
             $dayemo = substr($fech_emo, 0, 2);
             $fech_emo = $yearemo . '-' . $monthemo . '-' . $dayemo;
-=======
-        	$monthemo = substr($fech_emo, 3, 2);
-        	$dayemo = substr($fech_emo, 0, 2);
-        	$fech_emo = $yearemo . '-' . $monthemo . '-' . $dayemo;
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
             $contratoDAO->ingresarFechaEMO($codi_contr,$codi_empr,$codi_trab,$fech_emo);
             $registro = $contratoDAO->seleccionarImpre($codi_empr,$codi_contr);
 
             switch ($emo) {
-<<<<<<< HEAD
                 case 'sin':
                     require_once '../reporte/ceseSinEMO.php';
                     break;
@@ -480,29 +358,12 @@ if (isset($_SESSION['codi_usua'])) {
             }
 
             break;
-=======
-            	case 'con':
-            		require_once '../reporte/ceseConEMO.php';
-            		break;
-            	
-            	default:
-            		require_once '../reporte/ceseSinEMO.php';
-            		break;
-            }
-
-        	break;
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
   #####################################################################
 
         case 'seleccionador':
-<<<<<<< HEAD
             $agr = $_GET['agr'];
             $criterioBuscar = $_GET['criterioBuscar'];
-=======
-			$agr = $_GET['agr'];
-			$criterioBuscar = $_GET['criterioBuscar'];
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             require_once '../modelo/CondicionDAO.php';
             require_once '../modelo/Condicion.php';
             $condicionDAO = new CondicionDAO();
@@ -511,7 +372,6 @@ if (isset($_SESSION['codi_usua'])) {
             break;
 
         case 'seleccionadorCese':
-<<<<<<< HEAD
             $tipo = $_GET['tipo'];
             $codi_trab = $_GET['codi_trab'];
             $codi_contr = $_GET['codi_contr'];
@@ -524,19 +384,6 @@ if (isset($_SESSION['codi_usua'])) {
             $codi_cond = $_GET['codi_cond'];
             $indt_cont = $_GET['indt_cont'];
             #echo($indt_cont);
-=======
-        	$codi_trab = $_GET['codi_trab'];
-        	$codi_contr = $_GET['codi_contr'];
-        	require_once '../seleccionTipoCese.php';
-        	break;
-
-        case 'editarContrato':
-        	$codi_trab = $_GET['codi_trab'];
-            $codi_contr = $_GET['codi_contr'];
-            $codi_cond = $_GET['codi_cond'];
-            $indt_cont = $_GET['indt_cont'];
-            echo($indt_cont);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
             if (isset($_GET['criterioBuscar'])) {
                 $criterioBuscar = $_GET['criterioBuscar'];
@@ -572,7 +419,6 @@ if (isset($_SESSION['codi_usua'])) {
             require_once '../modelo/AreaDAO.php';
             $areaDao = new AreaDAO();
             $listaArea = $areaDao->listar($contratoreg->codi_empr);
-<<<<<<< HEAD
             
             switch ($indt_cont) {
                 case '1':
@@ -619,54 +465,6 @@ if (isset($_SESSION['codi_usua'])) {
         case 'nuevoContrato':
 
             $codi_trab = '';//$_GET['codi_trab'];
-=======
-        	
-            switch ($indt_cont) {
-            	case '1':
-            		switch ($codi_cond) {
-            			case '09':
-		  				    require_once '../modelo/CFProfesionalDAO.php';
-				            require_once '../modelo/CFProfesional.php';
-				            $cfp = new CFProfesional($codi_empr, '', '', '', '', '');
-				            $cfpdao = new CFProfesionalDAO();
-				            $listaCfprof = $cfpdao->listar($codi_empr);
-
-		  					require_once '../modelo/DetallePracticanteDAO.php';
-		  					$detallePracdao = new DetallePracticanteDAO();
-		  					$detallePrac = $detallePracdao->listarPor($contratoreg->codi_empr,$codi_trab,$codi_contr);
-		 					require_once '../contratoEditarPracticas.php';
-		 					break;
-
-            			case '10':
-            				require_once '../modelo/CFProfesionalDAO.php';
-				            require_once '../modelo/CFProfesional.php';
-				            $cfp = new CFProfesional($codi_empr, '', '', '', '', '');
-				            $cfpdao = new CFProfesionalDAO();
-				            $listaCfprof = $cfpdao->listar($codi_empr);
-
-		  					require_once '../modelo/DetallePracticanteDAO.php';
-		  					$detallePracdao = new DetallePracticanteDAO();
-		  					$detallePrac = $detallePracdao->listarPor($contratoreg->codi_empr,$codi_trab,$codi_contr);
-		 					require_once '../contratoEditarPracticas.php';
-            				break;
-
-            			default:
-							require_once '../contratoEditarSmod.php';            				
-            				break;
-            		}
-            		break;
-            	
-            	case '0':
-            		require_once '../EditarContratoIndt.php';
-            		break;
-            }
-
-        	break;
-        
-        case 'nuevoContrato':
-
-        	$codi_trab = '';//$_GET['codi_trab'];
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $codi_contr ='';// $_GET['codi_contr'];
             $criterioBuscar = $_GET['criterioBuscar'];
 
@@ -701,7 +499,6 @@ if (isset($_SESSION['codi_usua'])) {
             //echo $listaCond->desc_cond;
 
             switch ($indt_cont) {
-<<<<<<< HEAD
                 case 'false':
                     $indt_cont = 1;
                     switch ($codi_cond) {
@@ -737,43 +534,6 @@ if (isset($_SESSION['codi_usua'])) {
                     break;
             }
         break; 
-=======
-				case 'false':
-					$indt_cont = 1;
-				 	switch ($codi_cond) {
-		  				case '09':
-		  				    require_once '../modelo/CFProfesionalDAO.php';
-				            require_once '../modelo/CFProfesional.php';
-				            $cfp = new CFProfesional($codi_empr, '', '', '', '', '');
-				            $cfpdao = new CFProfesionalDAO();
-				            $listaCfprof = $cfpdao->listar($codi_empr);
-							require_once '../contratoEditarPracticas.php';
-		  					break;
-
-		  				case '10':
-				            require_once '../modelo/CFProfesionalDAO.php';
-				            require_once '../modelo/CFProfesional.php';
-				            $cfp = new CFProfesional($codi_empr, '', '', '', '', '');
-				            $cfpdao = new CFProfesionalDAO();
-				            $listaCfprof = $cfpdao->listar($codi_empr);
-							require_once '../contratoEditarPracticas.php';
-		  					break;
-
-		  				default:
-		  					echo $indt_cont;
-		  					require_once '../contratoEditarSmod.php';
-		  					break;
-  					}  
-				break; 
-
-				case 'true':
-					$indt_cont = 0;
-					#echo 'indeterminado';
-					require_once '../EditarContratoIndt.php';
-					break;
-            }
-    	break; 
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 
         case 'imprimirCartaSenati':
              $txtnom = $_GET['nom'];
@@ -781,7 +541,21 @@ if (isset($_SESSION['codi_usua'])) {
              $txtesp = $_GET['esp'];
 
              require_once("../reporte/cartaSENATI.php");
-             break;     
+             break;
+
+        case 'mostrarContratosPorMes':
+             $mes = $_GET['mes'];
+
+             #mes en numeral
+             require_once '../util/fechas.php';
+             $f = new Fechas();
+             $nummes = $f::getNumMes($mes);
+
+             require_once '../modelo/ContratoDAO.php';
+             $contratoDAO = new ContratoDAO();
+             $listacontratos = $contratoDAO->listarPorMes($nummes, $codi_empr);
+             require_once '../listaContratoCeseXMes.php';
+             break;   
     }
 
 } else {

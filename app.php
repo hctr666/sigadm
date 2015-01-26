@@ -33,11 +33,7 @@
             ul.menu {
                 float:right;
                 display:block;
-<<<<<<< HEAD
                 margin-top: 8px;
-=======
-                margin-top: 5px;
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                 list-style-type:none;
             }
             .menu li {
@@ -190,7 +186,6 @@
                     </tr>
                 </table>
             </div>
-<<<<<<< HEAD
             <div id="menuh">              
 	        <ul class="menu">
 		        <li><a href="#"  onclick="menuhcontratos()">Inicio</a></li>        
@@ -210,40 +205,16 @@
 </div>
 <center>
     <div id ="detalle"style="margin-left:278px; margin-right:10px; margin-top:35px; width:79%;">
-=======
-            <div id="cuerpo" style="height:100%">
-                <div id="menuh">              
-			        <ul class="menu">
-				        <li><a href="#"  onclick="menuhcontratos()">Inicio</a></li>        
-				        <li><a href="#">Usuario:                               
-	                		<?php echo $_SESSION['nomb_usua']; ?></a>
-		            		<ul>
-		                		<li ><a href="#" onClick="cambiarClave()" >Cambiar Clave</a></li>
-		            		</ul>
-        				</li>
-        				<li><a href="#" onclick="salir()">Cerrar</a></li>
-    				</ul>
-</div>
-<div id="menuv" class="main_cont" style="float:left;width:20%" >   
-    <?php require_once('menuOpciones.php'); ?>       
-</div>
-<center>
-    <div id ="detalle"style="margin-left:35px;float:left;width:75%;">
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         <div id="cargando" ></div>
         <!--<div><a href="#" class="scrolldown"></a></div>-->
             <div id="areaTrabajo" style="padding: 20px;">
             <h1 align="center">BIENVENIDOS A LA PLATAFORMA VIRTUAL<br>
-                DEL SISTEMA DE GESTION ADMINISTRATIVA
+                DEL SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA
                 <br/><br/><br/><img  src="img/logo00000001.jpg" width="680" height="260"></h1>
             <!-- <a href="#" id="open">click aqui</a>-->
         </div>
         <br>
-<<<<<<< HEAD
         <div id="area2" style="margin-right:5px; margin-left:5px; padding-top:5px;">
-=======
-        <div id="area2" style="padding:0px; padding-top:0px; padding-right:0px;">
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             
         </div>
     </div>
@@ -330,11 +301,7 @@
 </script>
             </div>
 
-<<<<<<< HEAD
             <div  class="pie">Sistema de Gestión Administrativa Virtual  - Gestor 2015 - Derechos Reservados
-=======
-            <div  class="pie">Sistema de Gestión Administrativa Virtual  - Gestor 2014 - Derechos Reservados
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             </div>
         </div>
 

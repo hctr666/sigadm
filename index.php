@@ -79,23 +79,16 @@ session_start();
 
             </div>
 
-<<<<<<< HEAD
             <div class="pie">Sistema de Gestión Administrativa Virtual  - Gestor 2014 - Derechos Reservados
-=======
-            <div class="pie">Sistema de Gesti髇 Administrativa Virtual  - Gestor 2014 - Derechos Reservados
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             </div>
         </div>
 
     </body>
 </html>
 <script>
-<<<<<<< HEAD
     $(function(){
     	$("#usua").focus();
     });
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     function validarUsuario() {
         empresa = document.forms[0].empresa.value;
         usua = document.forms[0].usua.value;
@@ -123,13 +116,8 @@ session_start();
                 function cambiarClave() {
 
             }
-<<<<<<< HEAD
             function enContruccion() {
                 alert("Disculpe, esta opcion esta en contrucciÃ³n")
-=======
-            function enContrucci贸n() {
-                alert("Disculpe, esta opcion esta en contrucci贸n")
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             }
             function noValida() {
             }
@@ -140,11 +128,7 @@ session_start();
                 document.getElementById("cargando").innerHTML = "";
             }
 
-<<<<<<< HEAD
 	//asignar botón por defecto
-=======
-	//asignar bot髇 por defecto
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     $(document).ready(function () {
         $("input").bind("keydown", function (event) {
             var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));

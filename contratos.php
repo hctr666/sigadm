@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 
 <div style="float:right;"><input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/></div>
 <center>
     <!--<font color="#1d537f"><h1>Gestión de Contratos</h1></font>-->
-=======
-<meta charset="utf-8">
-<div style="float:right;"><input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/></div>
-<center>
-    <!--<font color="#1d537f"><h1>Gesti贸n de Contratos</h1></font>-->
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     <?php 
         if (isset($criterioBuscar) && $criterioBuscar != "") {
             echo "<h3>Listado de Contratos de Trabajadores que empiecen con '$criterioBuscar'</h3>";
@@ -17,10 +10,6 @@
         }
 
      ?>
-<<<<<<< HEAD
-=======
-        <div id='edicionContrato'>
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         <!--<h3>Listado de Contratos:</h3>-->
         <form name=frmBuscar>
             <table class="ismtable">
@@ -31,16 +20,13 @@
                     <th>Tipo</th>            
                     <th>Cargo</th>
                     <th>Condicion</th>
-                    <th>Fech. Inic</th>
-                    <th>Fech. Fin</th>            
+                    <th>Inicio</th>
+                    <th>Fin</th>            
                     <!--<th Indt.</th>-->           
                     <th>Monto</th>                                    
                     <th>Editar</th>
                     <th>Cese</th>
-<<<<<<< HEAD
                     <th>Renuncia</th>
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                     <th>Imprimir</th>
                 </tr>
             </thead>
@@ -76,19 +62,12 @@
                         echo "<td align=center><input type='button' name='s' onclick=editContrato('$contrato->codi_contr','$contrato->codi_trab','$contrato->codi_cond',$contrato->indt_cont) /></td>";
                         
                         if ($contrato->indt_cont == 0) {
-<<<<<<< HEAD
                             echo "<td align=center><input disabled='true' type='button' name='i' onclick=ceseContrato(0,'$contrato->codi_contr','$contrato->codi_trab')></td>";
-                            echo "<td align=center><input disabled='true' type='button' name='i' onclick=ceseContrato(1,'$contrato->codi_contr','$contrato->codi_trab') /></td>";
+                            echo "<td align=center><input type='button' name='i' onclick=ceseContrato(1,'$contrato->codi_contr','$contrato->codi_trab') /></td>";
                             echo "<td align=center><input disabled='true' type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
                         } else {
                             echo "<td align=center><input type='button' name='i' onclick=ceseContrato(0,'$contrato->codi_contr','$contrato->codi_trab')></td>";
                             echo "<td align=center><input type='button' name='i' onclick=ceseContrato(1,'$contrato->codi_contr','$contrato->codi_trab')></td>";
-=======
-                            echo "<td align=center><input disabled='true' type='button' name='i' onclick=ceseContrato('$contrato->codi_contr','$contrato->codi_trab')></td>";
-                            echo "<td align=center><input disabled='true' type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
-                        } else {
-                            echo "<td align=center><input type='button' name='i' onclick=ceseContrato('$contrato->codi_contr','$contrato->codi_trab')></td>";
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                             echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
                         }
                         echo "</tr>";
@@ -101,11 +80,7 @@
             <input type='hidden' name='criterioBuscar'  value='<?=$criterioBuscar;?>' />
             <?php
             if (count($listacontratos) == 0) {
-<<<<<<< HEAD
-                echo "<font color='red'>¡No existen contratos para el trabajador seleccionado!</font>";
-=======
-                echo "<font color='red'>隆No existen contratos para el trabajador seleccionado!</font>";
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
+                echo "<font color='red'>丯o existen contratos para el trabajador seleccionado</font>";
             }
             ?>
             <br/>    
@@ -121,7 +96,6 @@
         subir();
     }
 
-<<<<<<< HEAD
     function ceseContrato(b,codi_contr, codi_trab){
         if (b == 1) {
             creaModal(400,240);
@@ -132,12 +106,6 @@
         criterio = document.frmBuscar.criterioBuscar.value;
         $("#bgmodal").load("controller/contratoController.php?accion=seleccionadorCese&codi_contr="+
             codi_contr+"&codi_trab="+codi_trab+"&tipo="+b);
-=======
-    function ceseContrato(codi_contr, codi_trab){
-        creaModal(400,200);
-        criterio = document.frmBuscar.criterioBuscar.value;
-        $("#bgmodal").load("controller/contratoController.php?accion=seleccionadorCese&codi_contr="+codi_contr+"&codi_trab="+codi_trab);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }
 
     function i(id) {
@@ -159,12 +127,7 @@
 
     function creaModal(w,h){
         var ancho = w; 
-<<<<<<< HEAD
         var alto = h;       
-=======
-        var alto = h;
-        
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         var bgdiv = $('<div>').attr({
             className: 'bgtransparent',
             id: 'bgtransparent'
@@ -206,19 +169,11 @@
         $('#bgtransparent').css("width", wscr);
         $('#bgtransparent').css("height", hscr);
         
-<<<<<<< HEAD
         // definiendo tamaño del contenedor
         $('#bgmodal').css("width", ancho+'px');
         $('#bgmodal').css("height", alto+'px');
         
         // obtiendo tamaño de contenedor
-=======
-        // definiendo tama帽o del contenedor
-        $('#bgmodal').css("width", ancho+'px');
-        $('#bgmodal').css("height", alto+'px');
-        
-        // obtiendo tama帽o de contenedor
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         var wcnt = $('#bgmodal').width();
         var hcnt = $('#bgmodal').height();
         
@@ -245,11 +200,7 @@
     }
     
     function eliminar(){
-<<<<<<< HEAD
         alert('Usted no puede utilizar esta opción');
-=======
-        alert('Usted no puede utilizar esta opci贸n');
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }  
     
     function buscarContrato()

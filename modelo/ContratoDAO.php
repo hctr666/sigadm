@@ -36,21 +36,22 @@ class ContratoDAO {
         return $lista;
     }
 
-    /*function seleccionarReporte($codi_empr,$id) {
-    
-       $sql= "SELECT c.*, t.appa_trab, t.apma_trab, t.nomb_trab, t.nume_dni, g.desc_carg, o.desc_cond, d.desc_dist, t.dire_trab, t.fech_naci 
-              FROM contrato c INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr 
-                              INNER JOIN cargo g on c.codi_carg=g.codi_carg and c.codi_empr=g.codi_empr 
-                              INNER JOIN condicion o on c.codi_cond=o.codi_cond and c.codi_empr=o.codi_empr 
-                              INNER JOIN distrito d on t.codi_dist=d.codi_dist and t.codi_empr=d.codi_empr  
-              WHERE c.codi_empr='$codi_empr' and c.codi_contr='$id' ";        
-       $lista=MySQL::arrayObject($sql);       
-       return $lista[0];
-    }*/
-
     function buscar($codi_empr, $texto) {
         $sql = "SELECT t.*,desc_dist FROM trabajador t inner join distrito d on t.codi_dist=d.codi_dist and appa_trab like '" . $texto . "%' and t.codi_empr='$codi_empr' order by appa_trab,apma_trab,nomb_trab  ";
 
+        $lista = MySQL::arrayObject($sql);
+        return $lista;
+    }
+
+    function listarPorMes($mes, $codi_empr){
+        $sql = "SELECT c.*,t.nume_dni,concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,fech_naci
+        FROM contrato c 
+          INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
+          INNER JOIN tipo_trabajador r on r.codi_tipo=c.codi_tipo and c.codi_empr=r.codi_empr
+          INNER JOIN cargo g on c.codi_carg=g.codi_carg and c.codi_empr=g.codi_empr
+          INNER JOIN condicion o on c.codi_cond=o.codi_cond and c.codi_empr=o.codi_empr 
+          INNER JOIN distrito d on t.codi_dist=d.codi_dist and t.codi_empr=d.codi_empr 
+        WHERE c.codi_empr='$codi_empr' and date_format(c.fech_fin,'%m')='$mes' and date_format(c.fech_fin,'%y')=date_format(now(), '%y') and c.indt_cont=1";
         $lista = MySQL::arrayObject($sql);
         return $lista;
     }

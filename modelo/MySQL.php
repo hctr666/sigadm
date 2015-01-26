@@ -5,10 +5,7 @@ class MySQL {
     function conectar() {
         $con = mysql_connect("localhost", "root", "FUCKn0k14c300") or die(":(");
         mysql_select_db("ism") or die("Problemas al conectar con la BD:(");
-<<<<<<< HEAD
         mysql_query("set names utf8");
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         return $con;
     }
 

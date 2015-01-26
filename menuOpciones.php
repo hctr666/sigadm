@@ -1,28 +1,32 @@
 <script>
 
+    function ceseMesActual() {
+        $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=ceseMesActual");
+        $("#area2").load(" ");        
+    }
+
     function cumpleanios()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=cumpleanios");
+        $("#area2").load(" ");
     }
 
     function contratos()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=1");
+        $("#area2").load(" ");
     }
 
     function temporada(){
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=temporada");
-<<<<<<< HEAD
         $("#area2").load(" ");   
         //alert("temporada de conejos");     
-=======
-        $("#area2").load(" ");        
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }
 
     function trabajador()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&buscar=no&val=1");
+        $("#area2").load(" ");    
     }
 
     function cargos()
@@ -34,6 +38,7 @@
     function areas()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=area");
+        $("#area2").load(" ");
     }
 
     function cartaSenati () {
@@ -122,14 +127,14 @@
     <ul>
         <li onclick="contratos()"><a href="#"  title="GESTION DE CONTRATOS">GESTION DE CONTRATOS</a></li>        
         <li onclick="trabajador()"><a href="#"  title="GESTION DE PERSONAL">GESTION DE PERSONAL</a></li>
-        <li onclick="cartaSenati()"><a href="#"  title="GESTION DE PERSONAL">Carta - Senati</a></li>
+        <li onclick="cartaSenati()"><a href="#"  title="Carta - SENATI">Carta - SENATI</a></li>
     </ul>
 </div> 
 <div class="menu_top_bg">REPORTES</div> 
 <div class="sub_menu"> 
     <ul>                       
-        <li onclick="cumpleanios()"><a href="#" title="MANTENIMIENTO DE CARGOS">LISTADO DE CUMPLEAÑOS DEL MES</a></li>                         
-        
+        <li onclick="cumpleanios()"><a href="#" title="CUMPLEAÑOS DE ESTE MES">CUMPLEAÑOS DE ESTE MES</a></li>                         
+        <li onclick="ceseMesActual()"><a href="#" title="CONTRATOS POR CESAR">CONTRATOS POR CULMINAR </a><font color="red" size="2" align='right'><label style="margin-right:10px; float:right;">Nuevo</label></font></li>        
     </ul>
 </div> 
 <div class="menu_top_bg">MANTENIMIENTO</div> 

@@ -58,11 +58,7 @@ if (isset($_SESSION['codi_usua'])) {
 
         case 'editar':
             $buscar = $_GET['buscar'];
-<<<<<<< HEAD
             #echo $buscar;
-=======
-            echo $buscar;
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
             $id = $_GET['id'];
             require_once '../modelo/TrabajadorDAO.php';
             require_once '../modelo/Trabajador.php';

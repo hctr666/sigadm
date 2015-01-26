@@ -1,13 +1,10 @@
 <center>
     <?php
-<<<<<<< HEAD
 
         if ($buscar=='no') {
 	   echo "<div style='float:right;'><input type='button' name='btnNuevo' onclick='nuevo()' value='Nuevo Trabajador'/></div>";
 	}
 
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         if ($buscar=='si'){
             echo "<br/>";
         } else if(isset($criterioBuscar) && $criterioBuscar != ""){
@@ -69,21 +66,13 @@
 
         <?php
         if (count($listaTrabajador) == 0) {
-<<<<<<< HEAD
             echo "<font color='red'>No existen elementos con ese criterio!</font>";
-=======
-            echo "<font color='red'>¡No existen elementos con ese criterio!</font>";
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         }
         ?>
         <br/>
         <?php
             if ($buscar=='no') {
-<<<<<<< HEAD
                 echo "<input type='button' name='btnNuevo' onclick='nuevo()' value='Nuevo Trabajador'/>";
-=======
-                echo "<input type='button' name='btnNuevo' onclick='nuevo()' value='Agregar Trabajador'/>";
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
                 echo "<input type='button' name='btnBuscar' onclick='buscarTrab()' value='Nueva Busqueda'/>";
             }
         ?>
@@ -126,11 +115,7 @@
         subir();
     }
     function eliminar(){
-<<<<<<< HEAD
         alert('Usted no puede utilizar esta opci��n');
-=======
-        alert('Usted no puede utilizar esta opción');
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     }  
     function buscarTrab()
     {

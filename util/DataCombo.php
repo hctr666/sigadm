@@ -26,27 +26,6 @@
                
             <?php
         }
-<<<<<<< HEAD
-=======
-
-        public static function mostrarValInicial($nombre, $result,$campo_oculto,$campo_lista,$valor_defecto,$javascript){
-            ?>
-                    <select name=<?php echo $nombre;?> id=<?php echo $nombre;?> onchange=<?php echo $javascript;?> >
-                    <?php                       
-                        foreach($result as $row )
-                        {                           
-                            if($row->$campo_oculto==$valor_defecto)                         
-                                echo "<option value=".$row->$campo_oculto." selected>".$row->$campo_lista."</option> ";
-                            else
-                                echo "<option value=".$row->$campo_oculto.">".$row->$campo_lista."</option> ";                              
-                        }                      
-                    ?>
-                    </select>   
-               
-            <?php
-        }
-
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 		public static function mostrar1($nombre, $result,$campo_oculto,$campo_lista,$valor_defecto, $javascript){
             ?>
                		<select name='<?php echo $nombre;?>' id='<?php echo $nombre;?>' onchange="<?php echo $javascript;?>"

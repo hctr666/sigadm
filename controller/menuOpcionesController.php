@@ -125,16 +125,26 @@ switch ($accion) {
 
     case 'temporada':
         require_once '../modelo/ContratoDAO.php';
-<<<<<<< HEAD
         $contratoDAO = new ContratoDAO();
         $anio_act = substr(date("Y-m-d"), 0,4);
         #echo "<script>alert($anio_act);</script>";
-=======
-        $contratoDAO = new contratoDAO();
-        $anio_act = substr(date("Y-m-d"), 0,4);
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
         $regFecha = $contratoDAO->cargarFechaTmpAlta($anio_act);
         require_once('../asignaTmpAlta.php');
         break;
+
+    case 'ceseMesActual':
+
+        #obteniendo el mes actual
+        $hoy = date("Y-m-d");
+        $hoy = strtotime("-1 day", strtotime($hoy));
+        $hoy = date("Y-m-d", $hoy);
+        $year = substr($hoy, 0, 4);
+
+        $meses = array('Enero','Febrero','Marzo','Abril','Mayo','Junio',
+            'Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre');
+
+        require_once('../seleccMesCese.php');
+        break;   
+
 }
 ?>

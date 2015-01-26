@@ -10,11 +10,7 @@
   $texto="
 <html>
   <head>
-<<<<<<< HEAD
     <meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1' />
-=======
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
     
   </head>
 

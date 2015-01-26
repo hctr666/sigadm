@@ -22,8 +22,12 @@
 	$pdf->Ln(20);
 
 	#colocar fecha
+		#colocar fecha
 		#dividir fecha 'd-m-y'
 		$hoy = date("Y-m-d");
+		$hoy = strtotime('-1 day', strtotime($hoy));#<===problema fecha resuelta##
+		$hoy = date("Y-m-d",$hoy);
+
 		$di = substr($hoy, 8, 2);
 		$me = substr($hoy, 5, 2);
 		$añ = substr($hoy, 0, 4);

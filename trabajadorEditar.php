@@ -247,11 +247,8 @@
 		$("#fech_naci").val('');
 	};
 
-<<<<<<< HEAD
         $(function(){
            document.frmEditar.appa_trab.focus();
         });
 
-=======
->>>>>>> 5d04742389ba3cc7193eb6599bf116077f6433a2
 </script>
