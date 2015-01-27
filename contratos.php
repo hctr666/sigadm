@@ -1,4 +1,3 @@
-
 <div style="float:right;"><input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/></div>
 <center>
     <!--<font color="#1d537f"><h1>Gesti¨®n de Contratos</h1></font>-->
@@ -90,6 +89,13 @@
     </div>
 </center>
 <script>
+    $("#area2").load(function(){
+        $(".spinner").fadeOut();
+        $("#cont1").delay(1000).fadeOut('slow');
+        $("#cont2").delay(1000).fadeOut('slow');
+        $("#cont3").delay(1000).fadeOut('slow');
+    });
+    
     function editContrato(codi_contr,codi_trab,codi_cond,indt_cont){
         //criterioBuscar = document.frmBuscar.criterioBuscar.value;
         $("#areaTrabajo").load("controller/contratoController.php?accion=editarContrato&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+criterioBuscar+"&codi_cond="+codi_cond+"&indt_cont="+indt_cont);

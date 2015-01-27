@@ -25,8 +25,8 @@
 		#colocar fecha
 		#dividir fecha 'd-m-y'
 		$hoy = date("Y-m-d");
-		$hoy = strtotime('-1 day', strtotime($hoy));#<===problema fecha resuelta##
-		$hoy = date("Y-m-d",$hoy);
+		#$hoy = strtotime('-1 day', strtotime($hoy));#<===problema fecha resuelta##
+		#$hoy = date("Y-m-d",$hoy);
 
 		$di = substr($hoy, 8, 2);
 		$me = substr($hoy, 5, 2);

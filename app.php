@@ -9,6 +9,7 @@
         <link rel="shortcut icon" href="/img/money.ico" />
         <link rel="stylesheet" type="text/css" href="css/estilo.css" />
     	<link rel="stylesheet" type="text/css" href="css/table.css" />
+        <link rel="stylesheet" type="text/css" href="css/preload.css" />
     
         <title>GESTOR VIRTUAL</title>
         
@@ -205,21 +206,68 @@
 </div>
 <center>
     <div id ="detalle"style="margin-left:278px; margin-right:10px; margin-top:35px; width:79%;">
-        <div id="cargando" ></div>
+        <!--<div id="cargando" ></div>-->
         <!--<div><a href="#" class="scrolldown"></a></div>-->
-            <div id="areaTrabajo" style="padding: 20px;">
-            <h1 align="center">BIENVENIDOS A LA PLATAFORMA VIRTUAL<br>
-                DEL SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA
-                <br/><br/><br/><img  src="img/logo00000001.jpg" width="680" height="260"></h1>
-            <!-- <a href="#" id="open">click aqui</a>-->
+        <div id="areaTrabajo" style="padding: 20px;">
+            <div class="spinner">
+              <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+              <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+              <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+            </div>
         </div>
         <br>
         <div id="area2" style="margin-right:5px; margin-left:5px; padding-top:5px;">
-            
+            <div class="spinner">
+              <div id="cont1" class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+              <div id="cont2" class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+              <div id="cont3" class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+              </div>
+            </div>         
         </div>
     </div>
-</center>   
+</center> 
+
 <script>
+    $("#areaTrabajo").load(function(){
+        $(".spinner").fadeOut();
+        $("#cont1").delay(1000).fadeOut('slow');
+        $("#cont2").delay(1000).fadeOut('slow');
+        $("#cont3").delay(1000).fadeOut('slow');
+    });
+
+    $(function(){
+        $("#areaTrabajo").load("welcome.php");
+        $("#area2").load(" ");
+    });
     
     function enContrucción() {
         alert("Disculpe, esta opcion esta en contrucción")
@@ -301,7 +349,7 @@
 </script>
             </div>
 
-            <div  class="pie">Sistema de Gestión Administrativa Virtual  - Gestor 2015 - Derechos Reservados
+            <div  class="pie">Sistema de Gestión Administrativa Virtual  - Gestor &copy; 2014 - <?php echo date("Y"); ?> Todos los Derechos Reservados
             </div>
         </div>
 

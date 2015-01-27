@@ -54,19 +54,23 @@
         criterioBuscar=encodeURIComponent(document.frmBusquedaTrabajador.criterioBuscar.value);
         buscar=encodeURIComponent(document.frmBusquedaTrabajador.buscar.value);
         
-        if(criterioBuscar.length>=1)
+        if(criterioBuscar.length >= 1){
+             $("#detalleBusqueda").load("util/preload.php");
              $("#detalleBusqueda").load("controller/trabajadorController.php?accion=buscar&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
-        else
+        } else {
             alert('Debe de ingresar mínimamente un caracter');
+        }
     }
     function buscarTrabNo(){
         criterioBuscar=encodeURIComponent(document.frmBusquedaTrabajador.criterioBuscar.value);
         buscar=encodeURIComponent(document.frmBusquedaTrabajador.buscar.value);
         
-        if(criterioBuscar.length>=1)
+        if(criterioBuscar.length>=1){
+            $("#area2").load("util/preload.php");
             $("#area2").load("controller/trabajadorController.php?accion=buscar&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
-        else
+        } else {
             alert('Debe de ingresar mínimamente un caracter');
+        }
     }
    
 </script>

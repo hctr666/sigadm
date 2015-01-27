@@ -79,6 +79,26 @@
     </form>
 </center>
 <script>
+
+    $(function(){
+        buscar = document.frmBuscar.buscar.value;
+        if (buscar == 'si') {
+            $("#detalleBusqueda").load(function(){
+                $(".spinner").fadeOut();
+                $("#cont1").delay(1000).fadeOut('slow');
+                $("#cont2").delay(1000).fadeOut('slow');
+                $("#cont3").delay(1000).fadeOut('slow');
+            });
+        } else {
+            $("#area2").load(function(){
+                $(".spinner").fadeOut();
+                $("#cont1").delay(1000).fadeOut('slow');
+                $("#cont2").delay(1000).fadeOut('slow');
+                $("#cont3").delay(1000).fadeOut('slow');
+            });
+        }
+    });
+
     function s(codi_trab,nombre)
     {
         var myTextField  =document.getElementById('txtNombre');
@@ -94,6 +114,7 @@
         /*document.frmEditar.nombre.value=nombre;
         document.frmEditar.nombre.value=nombre;*/
     }
+
     function e(id)
     {
         criterioBuscar = document.frmBuscar.criterioBuscar.value;  

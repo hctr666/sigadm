@@ -22,6 +22,7 @@
     function buscar(){
         criterioBuscar=encodeURIComponent(document.frmBusquedaTrabajador.criterioBuscar.value);
         if(criterioBuscar.length>=1){
+            $("#area2").load("util/preload.php");
             $("#area2").load("controller/contratoController.php?accion=mostrarContratos&criterioBuscar="+criterioBuscar);
         }
         else

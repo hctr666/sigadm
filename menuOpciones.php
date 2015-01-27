@@ -7,6 +7,7 @@
 
     function cumpleanios()
     {
+        $('#areaTrabajo').load('util/preload.php');
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=cumpleanios");
         $("#area2").load(" ");
     }
@@ -14,7 +15,7 @@
     function contratos()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=1");
-        $("#area2").load(" ");
+        $("#area2").load("util/preload.php");
     }
 
     function temporada(){
@@ -26,7 +27,7 @@
     function trabajador()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&buscar=no&val=1");
-        $("#area2").load(" ");    
+        $("#area2").load("util/preload.php");
     }
 
     function cargos()
@@ -116,7 +117,6 @@
         // estableciendo posicion
         $('#bgmodal').css("left", mleft+'px');
         $('#bgmodal').css("top", mtop+'px');
-        //alert('Usted no esta autorizado para usar esta funcion');
     }
 
 

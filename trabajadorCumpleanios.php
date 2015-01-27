@@ -1,7 +1,5 @@
 <?php
- $listaTrabajador
-
-
+    $listaTrabajador
 ?>
 
 <center>
@@ -33,7 +31,13 @@
             ?>
             </tbody>
         </table><br/>    
-        
-        
     </form>
 </center>
+<script type="text/javascript">
+    $("#areaTrabajo").load(function(){
+        $(".spinner").fadeOut();
+        $("#cont1").delay(1000).fadeOut('slow');
+        $("#cont2").delay(1000).fadeOut('slow');
+        $("#cont3").delay(1000).fadeOut('slow');
+    });
+</script>
