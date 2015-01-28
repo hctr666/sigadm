@@ -134,6 +134,15 @@
 
 <script>
  
+    $("#areaTrabajo").load(function(){
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
+    });
+
     codi_cond = encodeURIComponent(document.frmEditar.codi_cond.value);
 
     $(function() {
@@ -216,14 +225,23 @@
         if (codi_tipo != '3') {
             if(agregando == 0){            
                 //alert(codi_tipo +" - "+ codi_carg+" - "+codi_cond+ " - " +fech_inic+" - "+fech_fin+" - "+indt_cont+" - "+ mont_cont);
-                $("#area2").load("controller/contratoController.php?accion=grabar_editar&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);
+                $("#areaTrabajo").load("util/preload2.php");
+                $("#area2").load("controller/contratoController.php?accion=grabar_editar&criterioBuscar="+
+                    nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+
+                    codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+
+                    fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);
                 $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
+
             } else {
-                $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);   
+                $("#areaTrabajo").load("util/preload2.php");
+                $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+
+                    nombre+"&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&nombre="+nombre+"&codi_tipo="+
+                    codi_tipo+"&codi_carg="+codi_carg+"&codi_cond="+codi_cond+"&fech_inic="+fech_inic+"&fech_fin="+
+                    fech_fin+"&indt_cont="+indt_cont+"&mont_cont="+mont_cont);   
                 $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
             }
         } else if(codi_tipo == 3 && document.getElementById("txttipoactual")){
-            alert("Naaaaaaaaa aaa");
+            //alert("Naaaaaaaaa aaa");
         } else {
             cargarPracticanteData(agregando, id, idcontr);
         }

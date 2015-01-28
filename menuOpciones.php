@@ -1,5 +1,10 @@
 <script>
 
+    function cfprofesional () {
+        $("#area2").load("controller/menuOpcionesController.php?accion=cfprofesional");
+        $("#areaTrabajo").load(" ");
+    }
+
     function ceseMesActual() {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=ceseMesActual");
         $("#area2").load(" ");        
@@ -7,7 +12,7 @@
 
     function cumpleanios()
     {
-        $('#areaTrabajo').load('util/preload.php');
+        $('#areaTrabajo').load('util/preload2.php');
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=cumpleanios");
         $("#area2").load(" ");
     }
@@ -15,7 +20,7 @@
     function contratos()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=1");
-        $("#area2").load("util/preload.php");
+        $("#area2").load("util/preload2.php");
     }
 
     function temporada(){
@@ -27,7 +32,7 @@
     function trabajador()
     {
         $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&buscar=no&val=1");
-        $("#area2").load("util/preload.php");
+        $("#area2").load("util/preload2.php");
     }
 
     function cargos()
@@ -140,9 +145,10 @@
 <div class="menu_top_bg">MANTENIMIENTO</div> 
 <div class="sub_menu"> 
     <ul>
-        <li onclick="cargos()"><a href="#" title="MANTENIMIENTO DE CARGOS">MANTENIMIENTO DE CARGOS</a></li>                         
+        <li onclick="cargos()"><a href="#" title="CARGOS">CARGOS</a></li>                         
         <!--<li onclick="areas()"><a href="#" title="MANTENIMIENTO DE AREAS">MANTENIMIENTO DE AREAS</a></li>-->
-        <li onclick="condiciones()"><a href="#" title="MANTENIMIENTO DE CONDICION LABORAL">MANTENIMIENTO DE CONDICION LABORAL</a></li>
-        <li onclick="temporada()"><a href="#" title="TEMPORADA DE VERANO">TEMPORADA DE VERANO</a></li>    
+        <li onclick="condiciones()"><a href="#" title="CONDICION LABORAL">CONDICION LABORAL</a></li>
+        <li onclick="temporada()"><a href="#" title="TEMPORADA DE VERANO">TEMPORADA DE VERANO</a></li>
+        <li onclick="cfprofesional()"><a href="#" title="CENTRO DE FORMACIÓN PROFESIONAL">CENTRO DE FORMACIÓN PROFESIONAL</a><font color="red" size="2" align='right'><label style="margin-right:10px; float:right;">Nuevo</label></font></li>  
     </ul>
 </div> 

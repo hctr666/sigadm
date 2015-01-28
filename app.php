@@ -209,59 +209,27 @@
         <!--<div id="cargando" ></div>-->
         <!--<div><a href="#" class="scrolldown"></a></div>-->
         <div id="areaTrabajo" style="padding: 20px;">
-            <div class="spinner">
-              <div class="spinner-container container1">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
-              <div class="spinner-container container2">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
-              <div class="spinner-container container3">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
+            <div class="spinner2">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
             </div>
         </div>
         <br>
-        <div id="area2" style="margin-right:5px; margin-left:5px; padding-top:5px;">
-            <div class="spinner">
-              <div id="cont1" class="spinner-container container1">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
-              <div id="cont2" class="spinner-container container2">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
-              <div id="cont3" class="spinner-container container3">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-              </div>
-            </div>         
-        </div>
+        <div id="area2" style="margin-right:5px; margin-left:5px; padding-top:5px;"></div>
     </div>
 </center> 
 
 <script>
     $("#areaTrabajo").load(function(){
-        $(".spinner").fadeOut();
-        $("#cont1").delay(1000).fadeOut('slow');
-        $("#cont2").delay(1000).fadeOut('slow');
-        $("#cont3").delay(1000).fadeOut('slow');
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
     });
 
     $(function(){

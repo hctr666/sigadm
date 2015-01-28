@@ -54,6 +54,7 @@
 	function validar(agr){
 		codi_cond = document.frmElegir.codi_cond.value;
 		criterioBuscar = document.frmElegir.criterioBuscar.value;
+		$("#areaTrabajo").load("util/preload2.php");
 		$("#areaTrabajo").load("controller/contratoController.php?accion=nuevoContrato&codi_cond="
 			+codi_cond+"&criterioBuscar="+criterioBuscar+"&agr="+agr+"&indt_cont="+indt_cont);
 		closeModal();

@@ -35,9 +35,11 @@
 </center>
 <script type="text/javascript">
     $("#areaTrabajo").load(function(){
-        $(".spinner").fadeOut();
-        $("#cont1").delay(1000).fadeOut('slow');
-        $("#cont2").delay(1000).fadeOut('slow');
-        $("#cont3").delay(1000).fadeOut('slow');
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
     });
 </script>

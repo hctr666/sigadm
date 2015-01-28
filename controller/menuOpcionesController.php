@@ -146,5 +146,12 @@ switch ($accion) {
         require_once('../seleccMesCese.php');
         break;   
 
+    case 'cfprofesional':
+        require_once '../modelo/CFProfesionalDAO.php';
+        $cfprof = new CFProfesionalDAO();
+        $regcfprof = $cfprof->listar($codi_empr);
+        require_once '../cfprofLista.php';
+        break;
+
 }
 ?>

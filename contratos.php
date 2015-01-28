@@ -90,15 +90,20 @@
 </center>
 <script>
     $("#area2").load(function(){
-        $(".spinner").fadeOut();
-        $("#cont1").delay(1000).fadeOut('slow');
-        $("#cont2").delay(1000).fadeOut('slow');
-        $("#cont3").delay(1000).fadeOut('slow');
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
     });
     
     function editContrato(codi_contr,codi_trab,codi_cond,indt_cont){
         //criterioBuscar = document.frmBuscar.criterioBuscar.value;
-        $("#areaTrabajo").load("controller/contratoController.php?accion=editarContrato&codi_contr="+codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+criterioBuscar+"&codi_cond="+codi_cond+"&indt_cont="+indt_cont);
+        $("#areaTrabajo").load("util/preload2.php");
+        $("#areaTrabajo").load("controller/contratoController.php?accion=editarContrato&codi_contr="+
+            codi_contr+"&codi_trab="+codi_trab+"&criterioBuscar="+
+            criterioBuscar+"&codi_cond="+codi_cond+"&indt_cont="+indt_cont);
         subir();
     }
 

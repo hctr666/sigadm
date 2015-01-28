@@ -136,6 +136,15 @@
     </form>
 </center>
 <script>
+    $("#areaTrabajo").load(function(){
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
+    });
+
 	$(document).ready(function(){
 		$('#appa_trab').focus();
 	});
@@ -203,14 +212,22 @@
             document.forms[0].fech_naci.focus();
             return;
         }
-        if(agregando==0){              
-            $("#area2").load("controller/trabajadorController.php?accion=grabar_editar&criterioBuscar="+criterioBuscar+"&buscar="+buscar+"&id="+id+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+"&nomb_trab="+nomb_trab+"&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+dire_trab+"&codi_dist="+codi_dist+"&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
+        if(agregando==0){
+            $("#areaTrabajo").load("util/preload2.php");            
+            $("#area2").load("controller/trabajadorController.php?accion=grabar_editar&criterioBuscar="+criterioBuscar+
+                "&buscar="+buscar+"&id="+id+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+
+                "&nomb_trab="+nomb_trab+"&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+
+                dire_trab+"&codi_dist="+codi_dist+"&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&val=0&buscar="+buscar);
-        }
 
-        else
-            $("#area2").load("controller/trabajadorController.php?accion=grabar_nuevo&criterioBuscar="+criterioBuscar+"&buscar="+buscar+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+"&nomb_trab="+nomb_trab+"&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+dire_trab+"&codi_dist="+codi_dist+"&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
+        } else {
+            $("#areaTrabajo").load("util/preload2.php");            
+            $("#area2").load("controller/trabajadorController.php?accion=grabar_nuevo&criterioBuscar="+criterioBuscar+
+                "&buscar="+buscar+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+"&nomb_trab="+nomb_trab+
+                "&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+dire_trab+"&codi_dist="+codi_dist+
+                "&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&val=0&buscar="+buscar);     
+        }
     }
 
 	function actualizaProv(){
@@ -247,8 +264,8 @@
 		$("#fech_naci").val('');
 	};
 
-        $(function(){
-           document.frmEditar.appa_trab.focus();
-        });
+    $(function(){
+       document.frmEditar.appa_trab.focus();
+    });
 
 </script>

@@ -13,12 +13,14 @@
             echo '<h1>Gestión del Trabajador</h1>';
         }
     ?>
-    <form name=frmBusquedaTrabajador>
+    <form name=frmBusquedaTrabajador action="javascript:<?php if ($buscar == 'si') {echo 'buscarTrabSi()';} else {echo 'buscarTrabNo()';} ?>">
     <?php 
         echo "<input type='hidden' name='val' value=$val>";
      ?>
         <table>
-            <tr><th>Busque a Trabajador:</th><th><input type='text' name='criterioBuscar'></th><th>
+            <tr>
+                <th>Busque a Trabajador:</th>
+                <th><input type='text' name='criterioBuscar' id="criterioBuscar"></th><th>
                     <input type='button' value='Buscar' onclick='
                     <?php        
                         if ($buscar == 'si') 
@@ -43,6 +45,10 @@
 </div>
 <script>
 
+    $(function(){
+        $('#criterioBuscar').focus();
+    });
+
     val = document.frmBusquedaTrabajador.val.value;
     if (val == 1) {
         criterioBuscar = encodeURIComponent(document.frmBusquedaTrabajador.criterioBuscar.value);
@@ -55,7 +61,7 @@
         buscar=encodeURIComponent(document.frmBusquedaTrabajador.buscar.value);
         
         if(criterioBuscar.length >= 1){
-             $("#detalleBusqueda").load("util/preload.php");
+             $("#detalleBusqueda").load("util/preload2.php");
              $("#detalleBusqueda").load("controller/trabajadorController.php?accion=buscar&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
         } else {
             alert('Debe de ingresar mínimamente un caracter');
@@ -66,7 +72,7 @@
         buscar=encodeURIComponent(document.frmBusquedaTrabajador.buscar.value);
         
         if(criterioBuscar.length>=1){
-            $("#area2").load("util/preload.php");
+            $("#area2").load("util/preload2.php");
             $("#area2").load("controller/trabajadorController.php?accion=buscar&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
         } else {
             alert('Debe de ingresar mínimamente un caracter');

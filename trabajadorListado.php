@@ -84,17 +84,21 @@
         buscar = document.frmBuscar.buscar.value;
         if (buscar == 'si') {
             $("#detalleBusqueda").load(function(){
-                $(".spinner").fadeOut();
-                $("#cont1").delay(1000).fadeOut('slow');
-                $("#cont2").delay(1000).fadeOut('slow');
-                $("#cont3").delay(1000).fadeOut('slow');
+                $(".spinner2").delay(1000).fadeOut('slow');
+                $(".rect1").delay(1000).fadeOut('slow');
+                $(".rect2").delay(1000).fadeOut('slow');
+                $(".rect3").delay(1000).fadeOut('slow');
+                $(".rect4").delay(1000).fadeOut('slow');
+                $(".rect5").delay(1000).fadeOut('slow');
             });
         } else {
             $("#area2").load(function(){
-                $(".spinner").fadeOut();
-                $("#cont1").delay(1000).fadeOut('slow');
-                $("#cont2").delay(1000).fadeOut('slow');
-                $("#cont3").delay(1000).fadeOut('slow');
+                $(".spinner2").delay(1000).fadeOut('slow');
+                $(".rect1").delay(1000).fadeOut('slow');
+                $(".rect2").delay(1000).fadeOut('slow');
+                $(".rect3").delay(1000).fadeOut('slow');
+                $(".rect4").delay(1000).fadeOut('slow');
+                $(".rect5").delay(1000).fadeOut('slow');
             });
         }
     });
@@ -118,7 +122,8 @@
     function e(id)
     {
         criterioBuscar = document.frmBuscar.criterioBuscar.value;  
-        buscar= document.frmBuscar.buscar.value; 
+        buscar= document.frmBuscar.buscar.value;
+        $("#areaTrabajo").load("util/preload2.php");
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=editar&id="+id+"&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
 		subir();
 	}
@@ -132,6 +137,7 @@
     function nuevo(){   
         criterioBuscar = document.frmBuscar.criterioBuscar.value;    
         buscar= document.frmBuscar.buscar.value; 
+        $("#areaTrabajo").load("util/preload2.php");
         $("#areaTrabajo").load("controller/trabajadorController.php?accion=nuevo&criterioBuscar="+criterioBuscar+"&buscar="+buscar);
         subir();
     }

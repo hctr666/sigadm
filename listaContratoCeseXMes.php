@@ -64,6 +64,16 @@
     </div>
 </center>
 <script>
+
+    $("#area2").load(function(){
+        $(".spinner2").delay(1000).fadeOut('slow');
+        $(".rect1").delay(1000).fadeOut('slow');
+        $(".rect2").delay(1000).fadeOut('slow');
+        $(".rect3").delay(1000).fadeOut('slow');
+        $(".rect4").delay(1000).fadeOut('slow');
+        $(".rect5").delay(1000).fadeOut('slow');
+    });
+
     function ceseContrato(b,codi_contr, codi_trab){
         if (b == 1) {
             creaModal(400,240);
