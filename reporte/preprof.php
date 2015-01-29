@@ -146,6 +146,19 @@
 	$pdf->Ln(5);
 
 	$pdf->SetFont('Arial','',10);
+	$pdf->Cell(70,7,utf8_decode("Sexo:"),0,0,'I',false);
+	$pdf->SetFont('Arial','',10);
+	
+	if ($registro->sex_trab == 'M') {
+		$sex = 'Masculino';	
+	}else{
+		$sex = 'Femenino';
+	}
+
+	$pdf->Cell(0,7,$sex,0,0,'',false);
+	$pdf->Ln(5);
+
+	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(70,7,utf8_decode("Domicilio:"),0,0,'I',false);
 	$pdf->SetFont('Arial','',10);
 	$nom = utf8_decode("$registro->dire_trab");

@@ -12,7 +12,7 @@ class ContratoDAO {
     }
 
     function listar_todo($contrato){
-        $sql = "SELECT c.*,t.nume_dni,concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,fech_naci
+        $sql = "SELECT c.*,t.nume_dni, concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,sex_trab,fech_naci
         FROM contrato c 
         INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
         INNER JOIN tipo_trabajador r on r.codi_tipo=c.codi_tipo and c.codi_empr=r.codi_empr
@@ -25,7 +25,7 @@ class ContratoDAO {
 
     function seleccionarReporte($contrato, $criterio) {
         $criterio = $criterio . '%';
-        $sql = "SELECT c.*,t.nume_dni,concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,fech_naci
+        $sql = "SELECT c.*,t.nume_dni, concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,sex_trab,fech_naci
         FROM contrato c 
         INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
         INNER JOIN tipo_trabajador r on r.codi_tipo=c.codi_tipo and c.codi_empr=r.codi_empr
@@ -44,7 +44,7 @@ class ContratoDAO {
     }
 
     function listarPorMes($mes, $codi_empr){
-        $sql = "SELECT c.*,t.nume_dni,concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,fech_naci
+        $sql = "SELECT c.*,t.nume_dni, concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist,dire_trab,sex_trab,fech_naci
         FROM contrato c 
           INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
           INNER JOIN tipo_trabajador r on r.codi_tipo=c.codi_tipo and c.codi_empr=r.codi_empr
@@ -57,8 +57,8 @@ class ContratoDAO {
     }
 
     function seleccionar(Contrato $contrato) {
-        $sql = "SELECT c.*,t.nume_dni,concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,
-        r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist, a.codi_area, a.desc_area,dire_trab,fech_naci,indt_cont,mont_cont,ref_cont
+        $sql = "SELECT c.*,t.nume_dni, concat(t.appa_trab,' ', t.apma_trab,' ', t.nomb_trab) as nombre,
+        r.desc_tipo,g.desc_carg,o.desc_cond,d.desc_dist, a.codi_area, a.desc_area,dire_trab,sex_trab,fech_naci,indt_cont,mont_cont,ref_cont
         FROM contrato c 
 	        INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
 	        INNER JOIN tipo_trabajador r on r.codi_tipo=c.codi_tipo and c.codi_empr=r.codi_empr
@@ -66,7 +66,7 @@ class ContratoDAO {
 	        INNER JOIN condicion o on c.codi_cond=o.codi_cond and c.codi_empr=o.codi_empr 
 	        INNER JOIN distrito d on t.codi_dist=d.codi_dist and t.codi_empr=d.codi_empr
 	        INNER JOIN area a on c.codi_area = a.codi_area and c.codi_empr = d.codi_empr 
-        where  c.codi_empr='$contrato->codi_empr' and c.codi_contr=$contrato->codi_contr and c.cesado=0";
+        WHERE c.codi_empr='$contrato->codi_empr' and c.codi_contr=$contrato->codi_contr and c.cesado=0";
 
         $lista = MySQL::arrayObject($sql);
         return $lista[0];
@@ -74,7 +74,7 @@ class ContratoDAO {
 
     function seleccionarImpre($codi_empr,$id) {
     
-       $sql= "SELECT c.*, t.appa_trab, t.apma_trab, t.nomb_trab, t.nume_dni, g.desc_carg, o.desc_cond, 
+       $sql= "SELECT c.*, t.appa_trab, t.apma_trab, t.nomb_trab, t.nume_dni, t.sex_trab, g.desc_carg, o.desc_cond, 
        					d.desc_dist, t.dire_trab, t.fech_naci, p.desc_prov, dep.desc_depa, a.desc_area
               FROM contrato c INNER JOIN trabajador t on c.codi_trab=t.codi_trab and c.codi_empr=t.codi_empr
                               INNER JOIN cargo g on c.codi_carg=g.codi_carg and c.codi_empr=g.codi_empr 
@@ -125,14 +125,14 @@ class ContratoDAO {
        								codi_carg='$contrato->codi_carg',
 			                        codi_cond='$contrato->codi_cond',
 			                        fech_inic='$contrato->fech_inic',
-       								fech_fin='$contrato->fech_fin',
-       								indt_cont=$contrato->indt_cont,
-       								mont_cont=$contrato->mont_cont,
-       								codi_area='$contrato->codi_area',
-       								ref_cont='$contrato->ref_cont',
-				                    codi_trab=$contrato->codi_trab                     
+               								fech_fin='$contrato->fech_fin',
+               								indt_cont=$contrato->indt_cont,
+               								mont_cont=$contrato->mont_cont,
+               								codi_area='$contrato->codi_area',
+               								ref_cont='$contrato->ref_cont',
+				                      codi_trab=$contrato->codi_trab                     
        							WHERE codi_contr=$contrato->codi_contr  AND 
-       								  codi_empr='$contrato->codi_empr' ";
+       								    codi_empr='$contrato->codi_empr' ";
 
 
         return MySQL::abrirQuery($sql);

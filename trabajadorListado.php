@@ -23,10 +23,15 @@
             		<th>Nombre</th>
             		<th>DNI</th>
 		                <?php
-		                if ($buscar=='no')
-		                    echo "<th>Dirección</th><th>Distrito</th><th>F/Naci.</th><th>Editar</th><th>Imprimir</th>";
-		                else
-		                    echo "<th>Seleccionar</th>";
+    		                if ($buscar=='no'){
+    		                    echo "<th>Dirección</th>";
+                                echo "<th>Distrito</th>";
+                                echo "<th>F/Naci.</th>";
+                                echo "<th>Editar</th>";
+                                echo "<th>Imprimir</th>";
+    		                }else{
+    		                    echo "<th>Seleccionar</th>";
+                            }
 		                ?>
             	</tr>
             </thead>

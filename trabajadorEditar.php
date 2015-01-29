@@ -36,7 +36,23 @@
 						}
 					?>">
                 </td>
-            </tr>   
+            </tr>
+            <tr>
+                <td>Sexo</td>
+                <td>
+                    <select id="cmbSex" name="cmbSex">
+                        <?php 
+                            if ($registro->sex_trab == 'M') {
+                                echo "<option value='M'>Masculino</option>";
+                                echo "<option value='F'>Femenino</option>";
+                            } else {
+                                echo "<option value='F'>Femenino</option>";
+                                echo "<option value='M'>Masculino</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>  
             <tr>
                 <td>Codigo SAP</td>
                 <td><input type="text" maxlength="6" name="codi_sap" id="codi_sap" value="<?php
@@ -168,10 +184,12 @@
         codi_dist = encodeURIComponent(document.forms[0].codi_dist.value);
         codi_prov = encodeURIComponent(document.forms[0].codi_prov.value);
         codi_depa = encodeURIComponent(document.forms[0].codi_depa.value);
+        sex_trab = $('#cmbSex').find(":selected").val();//<== nuevo
 
         fech_naci = encodeURIComponent(document.forms[0].fech_naci.value);
         criterioBuscar = encodeURIComponent(document.forms[0].criterioBuscar.value);
         buscar=encodeURIComponent(document.forms[0].buscar.value);
+
         if (appa_trab.length == 0) {
             alert("Debes ingresar Ap.Paterno");
             document.forms[0].appa_trab.focus();
@@ -217,7 +235,8 @@
             $("#area2").load("controller/trabajadorController.php?accion=grabar_editar&criterioBuscar="+criterioBuscar+
                 "&buscar="+buscar+"&id="+id+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+
                 "&nomb_trab="+nomb_trab+"&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+
-                dire_trab+"&codi_dist="+codi_dist+"&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
+                dire_trab+"&codi_dist="+codi_dist+"&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa+
+                "&sex_trab="+sex_trab);
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&val=0&buscar="+buscar);
 
         } else {
@@ -225,7 +244,7 @@
             $("#area2").load("controller/trabajadorController.php?accion=grabar_nuevo&criterioBuscar="+criterioBuscar+
                 "&buscar="+buscar+"&appa_trab="+appa_trab+"&apma_trab="+apma_trab+"&nomb_trab="+nomb_trab+
                 "&codi_sap="+codi_sap+"&nume_dni="+nume_dni+"&dire_trab="+dire_trab+"&codi_dist="+codi_dist+
-                "&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa);
+                "&fech_naci="+fech_naci+"&codi_prov="+codi_prov+"&codi_depa="+codi_depa+"&sex_trab="+sex_trab);
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=trabajador&val=0&buscar="+buscar);     
         }
     }

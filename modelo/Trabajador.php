@@ -15,6 +15,7 @@ class Trabajador {
     public $codi_prov;
     public $codi_depa;
     public $cesado;
+    public $sex_trab;
 
     function __construct() {
         

@@ -105,6 +105,7 @@ if (isset($_SESSION['codi_usua'])) {
             $trabajador->codi_dist = $_GET['codi_dist'];
             $trabajador->codi_prov = $_GET['codi_prov'];
             $trabajador->codi_depa = $_GET['codi_depa'];
+            $trabajador->sex_trab = $_GET['sex_trab'];#<==nuevo
 
             $trabajador->codi_empr = $codi_empr;
             $year = substr($_GET['fech_naci'], 6, 4);
@@ -138,6 +139,8 @@ if (isset($_SESSION['codi_usua'])) {
             $trabajador->codi_prov = $_GET['codi_prov'];
             $trabajador->codi_depa = $_GET['codi_depa'];
             $trabajador->codi_empr = $codi_empr;
+            $trabajador->sex_trab = $_GET['sex_trab'];
+
             $year = substr($_GET['fech_naci'], 6, 4);
             $month = substr($_GET['fech_naci'], 3, 2);
             $day = substr($_GET['fech_naci'], 0, 2);
