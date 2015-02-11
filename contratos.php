@@ -1,15 +1,14 @@
 <div style="float:right;"><input type='button' name='btnNuevo' onclick='nuevoContrato()' value='Nuevo Contrato'/></div>
+<br>
 <center>
-    <!--<font color="#1d537f"><h1>Gesti¨®n de Contratos</h1></font>-->
     <?php 
         if (isset($criterioBuscar) && $criterioBuscar != "") {
             echo "<h3>Listado de Contratos de Trabajadores que empiecen con '$criterioBuscar'</h3>";
         } else {
             echo "<h3>Listado de Contratos</h3>";
         }
-
      ?>
-        <!--<h3>Listado de Contratos:</h3>-->
+     <h4><?php echo "Total: " . count($listacontratos) . " contratos"; ?></h4>
         <form name=frmBuscar>
             <table class="ismtable">
             <thead>
@@ -21,7 +20,6 @@
                     <th>Condicion</th>
                     <th>Inicio</th>
                     <th>Fin</th>            
-                    <!--<th Indt.</th>-->           
                     <th>Monto</th>                                    
                     <th>Editar</th>
                     <th>Cese</th>
@@ -67,7 +65,8 @@
                         } else {
                             echo "<td align=center><input type='button' name='i' onclick=ceseContrato(0,'$contrato->codi_contr','$contrato->codi_trab')></td>";
                             echo "<td align=center><input type='button' name='i' onclick=ceseContrato(1,'$contrato->codi_contr','$contrato->codi_trab')></td>";
-                            echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab') /></td>";
+                            #echo "<td align=center><input type='button' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab')></td>";
+                            echo "<td align=center><a href='#' name='i' onclick=impriContrato('$contrato->codi_contr','$contrato->codi_trab')><img src='img/print.png'></a></td>";
                         }
                         echo "</tr>";
                     }

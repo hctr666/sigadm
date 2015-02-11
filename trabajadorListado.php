@@ -1,10 +1,11 @@
+<?php 
+    if ($buscar=='no') {
+        echo "<div style='float:right;'><input type='button' name='btnNuevo' onclick='nuevo()' value='Nuevo Trabajador'/></div>";
+    }
+ ?>
+<br>
 <center>
     <?php
-
-        if ($buscar=='no') {
-	   echo "<div style='float:right;'><input type='button' name='btnNuevo' onclick='nuevo()' value='Nuevo Trabajador'/></div>";
-	}
-
         if ($buscar=='si'){
             echo "<br/>";
         } else if(isset($criterioBuscar) && $criterioBuscar != ""){
@@ -13,6 +14,7 @@
             echo "<h3>Listado de Trabajadores</h3>";
         }
     ?>
+<h4><?php echo "Total: " . count($listaTrabajador) . " trabajadores"; ?></h4>
     <form name=frmBuscar>
         <table class="ismtable">
             <thead>

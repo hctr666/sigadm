@@ -28,7 +28,7 @@
 	$pdf->Ln(4);
 
 	$pdf->SetFont('Arial','',10);
-	$p1 = utf8_decode("El(la) Señor(a) $registro->appa_trab $registro->apma_trab $registro->nomb_trab (en adelante, 'EL TRABAJADOR'), peruano, identificado con Documento Nacional de Identidad No. $registro->nume_dni, con domicilio Av. Salaverry Nº 301 - Distrito de $registro->desc_dist, Provincia de $registro->desc_prov y Departamento de $registro->desc_depa;");
+	$p1 = utf8_decode("El(la) Señor(a) $registro->appa_trab $registro->apma_trab $registro->nomb_trab (en adelante, 'EL TRABAJADOR'), peruano, identificado con Documento Nacional de Identidad No. $registro->nume_dni, con domicilio en $registro->dire_trab, Distrito de $registro->desc_dist, Provincia de $registro->desc_prov y Departamento de $registro->desc_depa;");
 	$pdf->MultiCell(0,5,$p1);
 	$pdf->Ln(10);
 

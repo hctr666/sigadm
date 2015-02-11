@@ -303,13 +303,14 @@
         //$("#cuerpo").load("controller/principalController.php?accion=salir");    
         location.href="controller/principalController.php?accion=salir";
     }
-    function menuhcontratos(){        
-        
+    
+    function menuhcontratos(){            
+        $("#area2").load(" ");   
         $("#areaTrabajo").load("controller/principalController.php?accion=mostrarFondo");    
-        $("#menuv").load("controller/principalController.php?accion=mnuContratos");    
+        $("#menuv").load("controller/principalController.php?accion=mnuContratos"); 
     }
+
     function menuhreportes(){        
-        
         enContrucción();
         /*$("#areaTrabajo").load("controller/principalController.php?accion=mostrarFondo");    
         $("#menuv").load("controller/principalController.php?accion=mnuReportes");    */

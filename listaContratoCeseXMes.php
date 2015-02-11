@@ -1,6 +1,14 @@
 <center>
     <!--<font color="#1d537f"><h1>Gestión de Contratos</h1></font>-->
 	<h3>Listado de Contratos que cesan el mes de <?php echo $mes; ?> </h3>
+    <h4><?php echo "Total: " . count($listacontratos) . " contratos"; ?></h4>
+        <br>
+        <span style='padding:5px;'>
+            <a href="#" style="text-decoration:none;" onclick="imprimir()"><img src="img/print.png" style="padding-right:5px;">
+                <span>Imprimir</span>
+            </a>
+        </span>
+        <br></br>
         <!--<h3>Listado de Contratos:</h3>-->
         <form name=frmBuscar>
             <table class="ismtable">
@@ -60,6 +68,7 @@
 	            }
             ?>
             <br/>    
+        <input type="hidden" id="mes" name="mes" value="<?php echo $mes; ?>" />
         </form>
     </div>
 </center>
@@ -151,8 +160,14 @@
         $('#bgtransparent').remove();
     }
     
-    function eliminar(){
-        alert('Usted no puede utilizar esta opción');
-    } 
+    function imprimir() {
+        //subir();
+        //criterioBuscar = document.frmBuscar.criterioBuscar.value;
+        mes = $("#mes").val();
+        //alert(mes);
+        var actionPath = "controller/contratoController.php?accion=impContratoCeseMesActual&mes="+mes;
+        var opciones = "toolbar=0, menubar=0,scrollbars=1,width=600,height=400,left=10, top=10,titlebar=no,resizable=1"
+        window.open(actionPath, '', opciones);        
+    }
 
 </script>

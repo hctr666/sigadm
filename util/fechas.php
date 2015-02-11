@@ -19,8 +19,7 @@
 					break;
 				case '04':
 					return 'Abril';
-					break;
-				
+					break;			
 				case '05':
 					return 'Mayo';
 					break;
@@ -39,7 +38,6 @@
 				case '10':
 					return 'Octubre';
 					break;
-				
 				case '11':
 					return 'Noviembre';
 					break;

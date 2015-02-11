@@ -139,7 +139,7 @@
 <div class="sub_menu"> 
     <ul>                       
         <li onclick="cumpleanios()"><a href="#" title="CUMPLEAÑOS DE ESTE MES">CUMPLEAÑOS DE ESTE MES</a></li>                         
-        <li onclick="ceseMesActual()"><a href="#" title="CONTRATOS POR CESAR">CONTRATOS POR CULMINAR </a><font color="red" size="2" align='right'><label style="margin-right:10px; float:right;">Nuevo</label></font></li>        
+        <li onclick="ceseMesActual()"><a href="#" title="CONTRATOS POR CESAR">CONTRATOS POR CULMINAR </a></li>        
     </ul>
 </div> 
 <div class="menu_top_bg">MANTENIMIENTO</div> 
@@ -149,6 +149,6 @@
         <!--<li onclick="areas()"><a href="#" title="MANTENIMIENTO DE AREAS">MANTENIMIENTO DE AREAS</a></li>-->
         <li onclick="condiciones()"><a href="#" title="CONDICION LABORAL">CONDICION LABORAL</a></li>
         <li onclick="temporada()"><a href="#" title="TEMPORADA DE VERANO">TEMPORADA DE VERANO</a></li>
-        <li onclick="cfprofesional()"><a href="#" title="CENTRO DE FORMACIÓN PROFESIONAL">CENTRO DE FORMACIÓN PROFESIONAL</a><font color="red" size="2" align='right'><label style="margin-right:10px; float:right;">Nuevo</label></font></li>  
+        <li onclick="cfprofesional()"><a href="#" title="CENTRO DE FORMACIÓN PROFESIONAL">CENTRO DE FORMACIÓN PROFESIONAL</a></li>  
     </ul>
 </div> 

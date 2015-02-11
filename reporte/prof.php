@@ -236,7 +236,7 @@
 		$mp = $mes::getMes($mp);
 
 	$pdf->SetFont('Arial','',10);	
-	$tex = utf8_decode("El Decano de la Facultad de $reg2->facu_prac (El CENTRO DE FORMACIÓN PROFESIONAL que presenta a el (la) egresado (a) mediante comunicación de fecha $dp de $mp del $yp, presenta a EL (LA) EGRESADO (A)  para que se le permita realizar sus Prácticas Profesionales en LA EMPRESA.");
+	$tex = utf8_decode("El(La) Decano(a) de la Facultad de $reg2->facu_prac de EL CENTRO DE FORMACIÓN PROFESIONAL; $reg2->dec_prac, mediante comunicación de fecha $dp de $mp del $yp, presenta a EL (LA) EGRESADO (A) para que se le permita realizar sus Prácticas Profesionales en LA EMPRESA.");
    	$tex = ltrim($tex, '?');
 	$pdf->MultiCell(0,5,$tex);
 	$pdf->Ln(7);

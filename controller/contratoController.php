@@ -170,11 +170,12 @@ if (isset($_SESSION['codi_usua'])) {
                 $detallePrac->mcap_prac = $_GET['mcap_prac'];
                 $detallePrac->esp_prac = $_GET['esp_prac'];
                 $detallePrac->codi_contr = $_GET['codi_contr'];
+                $detallePrac->dec_prac = $_GET['dec_prac'];
 
-                $fpresi_a0Š9o = substr($_GET['fpres_prac'], 6, 4);
+                $fpresi_anio = substr($_GET['fpres_prac'], 6, 4);
                 $fpresi_mes = substr($_GET['fpres_prac'], 3, 2);
                 $fpresi_dia = substr($_GET['fpres_prac'], 0, 2);
-                $detallePrac->fpres_prac = $fpresi_a0Š9o . '-' . $fpresi_mes . '-' . $fpresi_dia;
+                $detallePrac->fpres_prac = $fpresi_anio . '-' . $fpresi_mes . '-' . $fpresi_dia;
 
                 $detallePracdao = new DetallePracticanteDAO();
                 #grabar la data del practicante
@@ -183,7 +184,7 @@ if (isset($_SESSION['codi_usua'])) {
                     $criterioBuscar = substr($_GET['nombre'], 0, 1);
                     #$listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
                 } else {
-                    echo "<script>alert('No se edit¨® nada :(');</script>";
+                    echo "<script>alert('No se editó nada :(');</script>";
                 }
             }
             
@@ -227,7 +228,7 @@ if (isset($_SESSION['codi_usua'])) {
                 $criterioBuscar = substr($_GET['nombre'], 0, 1);
                 echo "<script>alert('Contrato agregado correctamente :)');</script>";
             } else {
-                echo "<script>alert('No se agreg¨® el cotrato :(');</script>";               
+                echo "<script>alert('No se agregó el cotrato :(');</script>";               
             }
 
             #si el contrato es por convenio de pr¨¢cticas pre prof. y profesionales
@@ -243,20 +244,21 @@ if (isset($_SESSION['codi_usua'])) {
                 $detallePrac->facu_prac = $_GET['facu_prac'];
                 $detallePrac->mcap_prac = $_GET['mcap_prac'];
                 $detallePrac->esp_prac = $_GET['esp_prac'];
+                $detallePrac->dec_prac = $_GET['dec_prac'];
 
-                $fpresi_a0Š9o = substr($_GET['fpres_prac'], 6, 4);
+                $fpresi_anio = substr($_GET['fpres_prac'], 6, 4);
                 $fpresi_mes = substr($_GET['fpres_prac'], 3, 2);
                 $fpresi_dia = substr($_GET['fpres_prac'], 0, 2);
-                $detallePrac->fpres_prac = $fpresi_a0Š9o . '-' . $fpresi_mes . '-' . $fpresi_dia;
+                $detallePrac->fpres_prac = $fpresi_anio . '-' . $fpresi_mes . '-' . $fpresi_dia;
 
                 $detallePracdao = new DetallePracticanteDAO();
                 #grabar la data del practicante
                 if ($detallePracdao->agregarPracticante($detallePrac) == 1) {
-                    echo "<script>alert('se agreg¨® el practicante');</script>";
+                    #echo "<script>alert('se agregó el practicante');</script>";
                     $criterioBuscar = substr($_GET['nombre'], 0, 1);
                     #$listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
                 } else {
-                    echo "<script>alert('No se agreg¨® nada :(');</script>";
+                    echo "<script>alert('No se agregó nada :(');</script>";
                 }
             }
             $listacontratos = $contratoDAO->seleccionarReporte($contrato, $criterioBuscar);
@@ -545,17 +547,32 @@ if (isset($_SESSION['codi_usua'])) {
 
         case 'mostrarContratosPorMes':
              $mes = $_GET['mes'];
-
              #mes en numeral
              require_once '../util/fechas.php';
              $f = new Fechas();
              $nummes = $f::getNumMes($mes);
+             #echo "<script>alert('mes: $nummes')</script>";
 
              require_once '../modelo/ContratoDAO.php';
              $contratoDAO = new ContratoDAO();
              $listacontratos = $contratoDAO->listarPorMes($nummes, $codi_empr);
              require_once '../listaContratoCeseXMes.php';
              break;   
+
+        case 'impContratoCeseMesActual':
+             $mes = $_GET['mes'];
+             $mes__ = (string)$mes;
+
+             require_once '../util/fechas.php';
+             $f = new Fechas();
+             $nummes = $f::getNumMes($mes__);
+
+             require_once '../modelo/ContratoDAO.php';
+             $contratoDAO = new ContratoDAO();
+             $listacontratos = $contratoDAO->listarPorMes($nummes, $codi_empr);
+             require_once '../reporte/contratosCeseMesActual.php';
+             break;
+
     }
 
 } else {

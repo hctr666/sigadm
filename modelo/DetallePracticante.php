@@ -9,7 +9,8 @@
 		var $esp_prac;
 		var $mcap_prac;
 		var $facu_prac;
-		var $fpres_prac;	
+		var $fpres_prac;
+		var $dec_prac;	
 	}
 
  ?>

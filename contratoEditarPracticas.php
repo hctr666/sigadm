@@ -42,8 +42,8 @@
                     ?>"></td>
             </tr>
             <tr>
-                <td>Facultad (pre-prof.)</td>
-                <td><input type="text"   maxlength="40" name="facu_prac" value="<?php
+                <td>Facultad (prof.)</td>
+                <td><input type="text"   maxlength="50" name="facu_prac" value="<?php
                            if ($agr <> 0) {
                                echo $detallePrac->facu_prac;
                            }
@@ -51,7 +51,16 @@
                 </td>
             </tr>
             <tr>
-                <td>Fecha presentación (pre-prof.)</td>
+                <td>Decano de facultad (prof.)</td>
+                <td><input type="text" size="40" name="dec_prac" value="<?php
+                           if ($agr <> 0) {
+                               echo $detallePrac->dec_prac;
+                           }
+                    ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha presentación (prof.)</td>
                 <td><input type="text" id="fpres_prac" maxlength="10" name="fpres_prac" value="<?php
                     if ($agr <> 0) {
                         $fecha = date('d/m/Y', strtotime($detallePrac->fpres_prac));
@@ -242,6 +251,7 @@
         codi_area = encodeURIComponent(document.frmEditar.codi_area.value);
         ref_cont = encodeURIComponent(document.frmEditar.ref_cont.value);
         codi_cfp = encodeURIComponent(document.frmEditar.codi_cfp.value);
+        dec_prac = encodeURIComponent(document.frmEditar.dec_prac.value);
 
         criterioBuscar=encodeURIComponent(document.frmEditar.criterioBuscar.value);
         
@@ -269,6 +279,12 @@
         		document.frmEditar.facu_prac.focus();
         		return;
         	}
+
+            if (dec_prac.length == 0) {
+                alert('Debes ingresar el nombre del decano de la facultad');
+                document.frmEditar.dec_prac.focus();
+                return;
+            }
         }
 
         if (mcap_prac.length == 0) {
@@ -315,7 +331,8 @@
             				"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+
             				"&mont_cont="+mont_cont+"&fpres_prac="+fpres_prac+"&situ_prac="+situ_prac+
             				"&facu_prac="+facu_prac+"&mcap_prac="+mcap_prac+"&esp_prac="+esp_prac+
-            				"&codi_area="+codi_area+"&ref_cont="+ref_cont+"&codi_cfp="+codi_cfp);
+            				"&codi_area="+codi_area+"&ref_cont="+ref_cont+"&codi_cfp="+codi_cfp+
+                            "&dec_prac="+dec_prac);
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
         } else {
             $("#area2").load("controller/contratoController.php?accion=grabar_nuevo&criterioBuscar="+
@@ -324,7 +341,8 @@
             				"&fech_inic="+fech_inic+"&fech_fin="+fech_fin+"&indt_cont="+indt_cont+
             				"&mont_cont="+mont_cont+"&fpres_prac="+fpres_prac+"&situ_prac="+situ_prac+
             				"&facu_prac="+facu_prac+"&mcap_prac="+mcap_prac+"&esp_prac="+esp_prac+
-            				"&codi_area="+codi_area+"&ref_cont="+ref_cont+"&codi_cfp="+codi_cfp);   
+            				"&codi_area="+codi_area+"&ref_cont="+ref_cont+"&codi_cfp="+codi_cfp+
+                            "&dec_prac="+dec_prac);   
             $("#areaTrabajo").load("controller/menuOpcionesController.php?accion=contratos&val=0");
         }
     }

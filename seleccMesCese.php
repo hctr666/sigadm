@@ -22,8 +22,13 @@
 	$(function(){
         $(document).on('change','#cmbMes', function(e){
             mes = this.options[e.target.selectedIndex].text;
-            $("#area2").load("util/preload2.php");
-            $("#area2").load("controller/contratoController.php?accion=mostrarContratosPorMes&mes=" + mes);
+            if (mes != 'seleccionar') {
+            	$("#area2").load("util/preload2.php");
+            	$("#area2").load("controller/contratoController.php?accion=mostrarContratosPorMes&mes=" + mes);
+            } else {
+           		$("#area2").load(" ");
+            	$("#area2").load(" ");
+            }
         });
     });
 </script>
